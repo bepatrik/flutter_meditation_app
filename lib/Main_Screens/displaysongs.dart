@@ -1,4 +1,3 @@
-import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Models/songs_model.dart';
 
@@ -29,14 +28,16 @@ class _DisplayScreenState extends State<DisplayScreen> {
   Widget build(BuildContext context) {
     ///Making an List
     ///which will filter the categories
-    List<SongsModelUI> newList =
-        audios.where((e) => e.category == widget.categoryFile).toList();
+    List<Categories> categoryFiltering =
+        songs.where((e) => e.categoryName == widget.categoryFile).toList();
 
     ///Body
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Text("Show Songs Category Here"),
+        ),
         body: Column(
-            children: newList
+            children: categoryFiltering
                 .map(
                   (e) => Card(
                     elevation: 2,
@@ -44,8 +45,8 @@ class _DisplayScreenState extends State<DisplayScreen> {
                       textColor: Colors.black,
                       iconColor: Colors.black,
                       leading: Icon(Icons.music_note),
-                      title: Text(e.name),
-                      subtitle: Text('Subtitle'),
+                      title: Text(e.songName),
+                      subtitle: Text(e.categoryName),
                       trailing: IconButton(
                         onPressed: () {
                           if (!playing) {

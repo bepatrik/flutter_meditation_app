@@ -14,17 +14,17 @@ class CategoryScreen extends StatelessWidget {
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
         ),
-        itemCount: audios.length,
+        itemCount: songsUI.length,
         itemBuilder: (BuildContext context, int index) {
           ///Inkwell of container
           return InkWell(
             onTap: () {
               ///checking printing or not
-              print(audios[index].category);
+              print(songsUI[index].category);
               Navigator.push(context, MaterialPageRoute(builder: (_) {
                 ///Taking Data to Display Screen
                 return DisplayScreen(
-                  categoryFile: audios[index].category,
+                  categoryFile: songsUI[index].category,
                 );
               }));
             },
@@ -42,7 +42,7 @@ class CategoryScreen extends StatelessWidget {
                 child: Center(
                   child: Text(
                     ///Categories of Songs
-                    '${audios[index].category}',
+                    '${songsUI[index].category}',
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.white,
