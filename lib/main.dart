@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_meditation_app/Main_Screens/play_music.dart';
+import 'package:flutter_meditation_app/Main_Screens/displaysongs.dart';
+import 'package:flutter_meditation_app/Main_Screens/main_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,13 +20,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
         primaryColor: Colors.blue,
+        scaffoldBackgroundColor: Colors.black,
       ),
 
       ///home
-      home: PlayMusic(),
-
-      ///routes
-      routes: {},
+      home: CategoryScreen(),
     );
   }
 }
