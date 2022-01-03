@@ -6,6 +6,7 @@ class DisplayScreen extends StatefulWidget {
   static final id = '/DisplayScreen';
 
   ///CategoryFile
+  ///
   ///to get data from main Screen
   String categoryFile;
 
@@ -28,13 +29,19 @@ class _DisplayScreenState extends State<DisplayScreen> {
   Widget build(BuildContext context) {
     ///Making an List
     ///which will filter the categories
-    List<Categories> categoryFiltering =
-        songs.where((e) => e.categoryName == widget.categoryFile).toList();
+    List<Categories> categoryFiltering = songsCategories
+        .where(
+          (e) => e.categoryName == widget.categoryFile,
+        )
+        .toList();
 
     ///Body
     return Scaffold(
         appBar: AppBar(
-          title: Text("Show Songs Category Here"),
+          ///categories Name will be shown in appbar
+          title: Text(
+            widget.categoryFile,
+          ),
         ),
         body: Column(
             children: categoryFiltering

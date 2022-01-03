@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Main_Screens/displaysongs.dart';
 import 'package:flutter_meditation_app/Models/songs_model.dart';
+import 'package:flutter_meditation_app/Widgets/drawer.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CategoryScreen extends StatelessWidget {
   static final id = '/CategoryScreen';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Listen to relax yourself'),
+      ),
+      drawer: MyDrawerWidget(),
+
       ///GridView
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

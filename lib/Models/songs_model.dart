@@ -14,16 +14,22 @@ class SongsModelUI {
 ////This List is only for to make UI
 List<SongsModelUI> songsUI = [
   SongsModelUI(
-    category: 'Fast Songs',
+    category: 'Fast Sounds',
   ),
   SongsModelUI(
-    category: 'Calm Songs',
+    category: 'Romantic Sounds',
   ),
   SongsModelUI(
-    category: 'Sleepy Songs',
+    category: 'Nature Sounds',
   ),
   SongsModelUI(
-    category: 'Study Songs',
+    category: 'Calm Sounds',
+  ),
+  SongsModelUI(
+    category: 'Sleepy Sounds',
+  ),
+  SongsModelUI(
+    category: 'Study Sounds',
   ),
 ];
 
@@ -37,28 +43,106 @@ class Categories {
   String categoryName;
   String songName;
 
-  Categories({this.categoryName, this.songName});
+  Categories({
+    this.categoryName,
+    this.songName,
+  });
 }
 
-List<Categories> songs = [
+List<Categories> songsCategories = [
+  /*---------------------
+  Fast Songs
+  -----------------------*/
   Categories(
-    categoryName: 'Fast Songs',
+    categoryName: 'Fast Sounds',
     songName: 'music_(1).mpeg',
   ),
   Categories(
-    categoryName: 'Fast Songs',
+    categoryName: 'Fast Sounds',
     songName: 'music_(2).mpeg',
   ),
   Categories(
-    categoryName: 'Calm Songs',
+    categoryName: 'Fast Sounds',
     songName: 'music_(3).mpeg',
   ),
   Categories(
-    categoryName: 'Sleepy Songs',
+    categoryName: 'Fast Sounds',
     songName: 'music_(4).mpeg',
   ),
   Categories(
-    categoryName: 'Study Songs',
+    categoryName: 'Fast Sounds',
     songName: 'music_(5).mpeg',
+  ),
+
+  /*---------------------
+  Romantic
+  -----------------------*/
+  Categories(
+    categoryName: 'Romantic Sounds',
+    songName: 'Romantic1.mpeg',
+  ),
+
+  /*---------------------
+  Nature Songs
+  -----------------------*/
+  Categories(
+    categoryName: 'Nature Sounds',
+    songName: 'nature1.mpeg',
+  ),
+  Categories(
+    categoryName: 'Nature Sounds',
+    songName: 'nature2.mpeg',
+  ),
+  Categories(
+    categoryName: 'Nature Sounds',
+    songName: 'nature3.mpeg',
+  ),
+  Categories(
+    categoryName: 'Nature Sounds',
+    songName: 'nature4.mpeg',
+  ),
+  Categories(
+    categoryName: 'Nature Sounds',
+    songName: 'nature5.mpeg',
+  ),
+
+  /*---------------------
+  Calm Songs
+  -----------------------*/
+  Categories(
+    categoryName: 'Calm Sounds',
+    songName: 'calm1.mpeg',
+  ),
+  Categories(
+    categoryName: 'Calm Sounds',
+    songName: 'calm2.mpeg',
+  ),
+  Categories(
+    categoryName: 'Calm Sounds',
+    songName: 'calm3.mpeg',
+  ),
+  Categories(
+    categoryName: 'Calm Sounds',
+    songName: 'calm4.mpeg',
+  ),
+  Categories(
+    categoryName: 'Calm Sounds',
+    songName: 'calm5.mpeg',
+  ),
+
+  /*---------------------
+  Sleepy Songs
+  -----------------------*/
+  Categories(
+    categoryName: 'Sleepy Sounds',
+    songName: 'sleepy1.mpeg',
+  ),
+
+  /*---------------------
+  Study Songs
+  -----------------------*/
+  Categories(
+    categoryName: 'Study Sounds',
+    songName: 'No Songs yet in it',
   ),
 ];
