@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Dummy_Music_Testing/Dummy_Widgets/audio_screen.dart';
-import 'package:flutter_meditation_app/Main_Screens/displaysongs.dart';
-import 'package:flutter_meditation_app/Main_Screens/main_screen.dart';
+import 'package:flutter_meditation_app/Main_Screens/category_songs_screen.dart';
 
 void main() {
   runApp(MyApp());

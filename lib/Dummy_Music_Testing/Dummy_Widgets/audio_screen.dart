@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_meditation_app/Dummy_Music_Testing/Dummy_Model/song_info.dart';
+import 'package:flutter_meditation_app/Dummy_Music_Testing/Dummy_Model/song_model.dart';
 import 'package:flutter_meditation_app/Dummy_Music_Testing/Dummy_Widgets/song_widget.dart';
-import 'package:flutter_meditation_app/Models/songs_model.dart';
 
 class AudioPlayerScreen extends StatelessWidget {
   @override
@@ -14,9 +13,9 @@ class AudioPlayerScreen extends StatelessWidget {
   Widget _audioPlayerWidget() {
     List<SongInfo> songs = [
       SongInfo(
-        songTitle: 'Music 1',
+        songTitle: 'Calm Sounds',
         song: 'nature1.mpeg',
-        artist: 'Zeeshan Tariq',
+        artist: 'Nature',
         image: 'images/music1.png',
       ),
       SongInfo(

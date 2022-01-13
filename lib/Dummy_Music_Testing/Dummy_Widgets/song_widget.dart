@@ -1,11 +1,13 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_meditation_app/Dummy_Music_Testing/Dummy_Model/song_info.dart';
+import 'package:flutter_meditation_app/Dummy_Music_Testing/Dummy_Model/song_model.dart';
 
 class SongWidget extends StatefulWidget {
   final List<SongInfo> songList;
 
-  SongWidget({@required this.songList});
+  SongWidget({
+    @required this.songList,
+  });
 
   @override
   _SongWidgetState createState() => _SongWidgetState();
@@ -86,13 +88,18 @@ class _SongWidgetState extends State<SongWidget> {
         ),
         FadeInImage(
           fadeInDuration: Duration(seconds: 2),
-          placeholder: AssetImage(widget.songList[songIndex].image),
+          placeholder: AssetImage(
+            widget.songList[songIndex].image,
+          ),
           image: AssetImage(
             widget.songList[songIndex].image,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+          padding: EdgeInsets.only(
+            top: 20.0,
+            bottom: 20.0,
+          ),
           child: Column(
             children: [
               Text(
@@ -135,18 +142,24 @@ class _SongWidgetState extends State<SongWidget> {
 
   Widget _playBack() {
     return IconButton(
-        icon: Icon(
-          Icons.skip_previous,
-          color: Colors.grey.shade700,
-          size: 30,
-        ),
-        onPressed: () {
-          setState(() {
+      icon: Icon(
+        Icons.skip_previous,
+        color: Colors.grey.shade700,
+        size: 30,
+      ),
+      onPressed: () {
+        setState(
+          () {
             _resetPlayer();
-            songIndex =
-                songIndex == 0 ? widget.songList.length - 1 : songIndex - 1;
-          });
-        });
+            if (songIndex == 0) {
+              songIndex = widget.songList.length - 1;
+            } else {
+              songIndex = songIndex - 1;
+            }
+          },
+        );
+      },
+    );
   }
 
   Widget _play() {
@@ -209,7 +222,10 @@ class _SongWidgetState extends State<SongWidget> {
 
   Widget _durationWidget() {
     return Padding(
-      padding: EdgeInsets.only(left: 20.0, right: 20.0),
+      padding: EdgeInsets.only(
+        left: 20.0,
+        right: 20.0,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
