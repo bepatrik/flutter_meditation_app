@@ -6,26 +6,28 @@ class AudioPlayerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: _audioPlayerWidget()),
+      body: SafeArea(
+        child: _audioPlayerWidget(),
+      ),
     );
   }
 
   Widget _audioPlayerWidget() {
     List<SongInfo> songs = [
       SongInfo(
-        songTitle: 'Calm Sounds',
+        category: 'Calm Sounds',
         song: 'nature1.mpeg',
         artist: 'Nature',
         image: 'images/music1.png',
       ),
       SongInfo(
-        songTitle: 'Music 2',
+        category: 'Music 2',
         song: 'nature2.mpeg',
         artist: 'Ali ijaz',
         image: 'images/music1.png',
       ),
       SongInfo(
-        songTitle: 'Music 3',
+        category: 'Music 3',
         song: 'nature3.mpeg',
         artist: 'Faraz',
         image: 'images/music1.png',

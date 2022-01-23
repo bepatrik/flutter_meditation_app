@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Main_Screens/display_songs_screen.dart';
 import 'package:flutter_meditation_app/Models/songs_model.dart';
-import 'package:flutter_meditation_app/Widgets/drawer.dart';
 
 class CategoryScreen extends StatelessWidget {
   static final id = '/CategoryScreen';
@@ -11,7 +10,6 @@ class CategoryScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Listen to relax yourself'),
       ),
-      drawer: MyDrawerWidget(),
 
       ///GridView
       body: GridView.builder(

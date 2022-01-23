@@ -103,7 +103,7 @@ class _SongWidgetState extends State<SongWidget> {
           child: Column(
             children: [
               Text(
-                widget.songList[songIndex].songTitle,
+                widget.songList[songIndex].category,
                 style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,

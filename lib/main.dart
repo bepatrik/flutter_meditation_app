@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_meditation_app/Dummy_Music_Testing/Dummy_HomePage/dummy_homepage.dart';
 import 'package:flutter_meditation_app/Dummy_Music_Testing/Dummy_Widgets/audio_screen.dart';
-import 'package:flutter_meditation_app/Main_Screens/category_songs_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       ),
 
       ///home
-      home: AudioPlayerScreen(),
+      home: DummyHomePage(),
     );
   }
 }
