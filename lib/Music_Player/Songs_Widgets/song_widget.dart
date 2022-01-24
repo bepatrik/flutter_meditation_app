@@ -1,6 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_meditation_app/Dummy_Music_Testing/Dummy_Model/song_model.dart';
+import 'package:flutter_meditation_app/Music_Player/Songs_Model/song_model.dart';
 
 class SongWidget extends StatefulWidget {
   final List<SongInfo> songList;

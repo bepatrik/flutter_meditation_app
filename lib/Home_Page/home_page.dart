@@ -4,7 +4,9 @@ import 'package:flutter_meditation_app/Music_Player/Songs_Widgets/audio_screen.d
 import 'package:flutter_meditation_app/Music_Player/UI_Model/dummy_ui_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DummyHomePage extends StatelessWidget {
+class HomePage extends StatelessWidget {
+  ///final id
+  static final id = '/HomePage';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

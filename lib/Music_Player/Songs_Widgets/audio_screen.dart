@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_meditation_app/Dummy_Music_Testing/Dummy_Model/song_model.dart';
-import 'package:flutter_meditation_app/Dummy_Music_Testing/Dummy_Widgets/song_widget.dart';
+import 'package:flutter_meditation_app/Music_Player/Songs_Model/song_model.dart';
+import 'package:flutter_meditation_app/Music_Player/Songs_Widgets/song_widget.dart';
 
 class AudioPlayerScreen extends StatelessWidget {
+  static final id = '/AudioPlayerScreen';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
