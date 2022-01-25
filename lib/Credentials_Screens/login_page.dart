@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Constants/constants.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/signup_page.dart';
 import 'package:flutter_meditation_app/Customs/login_signup_button.dart';
+import 'package:flutter_meditation_app/Customs/textfield.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LogInScreen extends StatelessWidget {
@@ -68,7 +69,7 @@ class LogInScreen extends StatelessWidget {
                                 textStyle: TextStyle(
                               fontSize: 45.0,
                               fontWeight: FontWeight.bold,
-                              color: kblueClr,
+                              color: Colors.black,
                             )),
                           ),
                           Text(
@@ -76,56 +77,30 @@ class LogInScreen extends StatelessWidget {
                             style: GoogleFonts.lateef(
                               textStyle: TextStyle(
                                 fontSize: 35.0,
-                                color: kblueClr,
+                                color: Colors.black,
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(12.0),
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
-                                prefixIcon: Icon(
-                                  Icons.email,
-                                  color: kblueClr,
-                                ),
-                                labelText: 'Enter Email',
-                                labelStyle: TextStyle(
-                                  color: kblueClr,
-                                ),
-                              ),
-                            ),
+                          CustomTextField(
+                            txt: 'Enter Email',
+                            txtClr: Colors.black,
+                            prefixIcon: Icons.email,
+                            iconClr: Colors.black,
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(12.0),
-                            child: TextFormField(
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
-                                prefixIcon: Icon(
-                                  Icons.password,
-                                  color: kblueClr,
-                                ),
-                                labelText: 'Enter Password',
-                                labelStyle: TextStyle(
-                                  color: kblueClr,
-                                ),
-                                suffixIcon: Icon(
-                                  Icons.visibility,
-                                  color: kblueClr,
-                                ),
-                              ),
-                            ),
+                          CustomTextField(
+                            txt: 'Enter Password',
+                            txtClr: Colors.black,
+                            prefixIcon: Icons.lock,
+                            SuffixIcon: Icons.visibility,
+                            iconClr: Colors.black,
                           ),
                           /*********************************************
                           * LOGIN CUSTOM BUTTON
                           **********************************************/
                           Custom_Button(
                             txt: 'LOGIN',
+                            clr: kblueClr,
+                            onPress: () {},
                           ),
                           Text(
                             'Forgot Password?',

@@ -7,3 +7,4 @@ String loginImgLink =
 ///Colors from Color Picker
 Color kblueClr = Color(0xff1e3883);
 Color kwhiteClr = Color(0xfff6f6f6);
+Color kYellowClr = Color(0xffffd842);
