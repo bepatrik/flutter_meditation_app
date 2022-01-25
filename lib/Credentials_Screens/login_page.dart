@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Constants/constants.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/signup_page.dart';
+import 'package:flutter_meditation_app/Customs/login_signup_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LogInScreen extends StatelessWidget {
@@ -10,7 +11,7 @@ class LogInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Container(
           /*********************************************
            * Bg Container Img
@@ -23,6 +24,7 @@ class LogInScreen extends StatelessWidget {
               fit: BoxFit.fitHeight,
             ),
           ),
+          height: MediaQuery.of(context).size.height,
           width: double.infinity,
           child: Container(
             child: Column(
@@ -32,25 +34,13 @@ class LogInScreen extends StatelessWidget {
                  * HEADER
                 **********************************************/
                 Center(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      'Welcome to Medito-app',
-                      style: GoogleFonts.lateef(
-                        textStyle: TextStyle(
-                          fontSize: 40.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
+                  child: Image.asset('images/girl.png'),
                 ),
 
                 /*********************************************
                  * SizedBox
                 **********************************************/
-                SizedBox(height: 100),
+                SizedBox(height: 50),
 
                 /*********************************************
                  * Login Container
@@ -69,11 +59,6 @@ class LogInScreen extends StatelessWidget {
                     child: Container(
                       child: Column(
                         children: [
-                          /*********************************************
-                          * Sized Box
-                          **********************************************/
-                          SizedBox(height: 30),
-
                           /*********************************************
                           * Info
                           **********************************************/
@@ -136,27 +121,11 @@ class LogInScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(12.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: kblueClr,
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              height: 70,
-                              child: Center(
-                                child: Text(
-                                  'LOGIN',
-                                  style: GoogleFonts.lateef(
-                                    textStyle: TextStyle(
-                                      fontSize: 25.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
+                          /*********************************************
+                          * LOGIN CUSTOM BUTTON
+                          **********************************************/
+                          Custom_Button(
+                            txt: 'LOGIN',
                           ),
                           Text(
                             'Forgot Password?',
@@ -206,5 +175,3 @@ class LogInScreen extends StatelessWidget {
     );
   }
 }
-
-class Expa {}

@@ -8,7 +8,7 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SIgnup'),
+        title: Text('Sign Up Screen'),
       ),
     );
   }
