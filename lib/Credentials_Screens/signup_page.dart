@@ -17,6 +17,11 @@ class SignUpScreen extends StatelessWidget {
       body: Container(
         height: s.height,
         width: s.width,
+/*********************************************
+ * PROPERTY DECORATION IMAGE
+ * TO MAKE BACKGROUND IMAGE
+ * IMAGE IS FROM NETWORK
+**********************************************/
         decoration: BoxDecoration(
           image: DecorationImage(
             image: CachedNetworkImageProvider(

@@ -11,6 +11,7 @@ class HomePage extends StatelessWidget {
     ///final size
     final Size s = MediaQuery.of(context).size;
 
+    ///Scaffold
     return Scaffold(
       body: Container(
         height: s.height,

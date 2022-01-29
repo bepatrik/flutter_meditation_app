@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Music_Player/Songs_Model/song_model.dart';
 
 class SongWidget extends StatefulWidget {
+  ///Getting data from SONG INFO
   final List<SongInfo> songList;
 
+  ///CONST
   SongWidget({
     @required this.songList,
   });
@@ -138,6 +140,9 @@ class _SongWidgetState extends State<SongWidget> {
     );
   }
 
+/*********************************************
+ * PLAYBACK
+**********************************************/
   Widget _playBack() {
     return IconButton(
       icon: Icon(
@@ -160,6 +165,9 @@ class _SongWidgetState extends State<SongWidget> {
     );
   }
 
+/*********************************************
+   *PLAY  
+**********************************************/
   Widget _play() {
     return IconButton(
         icon: Icon(
@@ -176,6 +184,9 @@ class _SongWidgetState extends State<SongWidget> {
         });
   }
 
+/*********************************************
+ * FASTFORWARD METHOD
+**********************************************/
   Widget _fastForward() {
     return IconButton(
         icon: Icon(
@@ -195,7 +206,9 @@ class _SongWidgetState extends State<SongWidget> {
   Widget slider() {
     ///the defdur is default duration i made like this:
     var defdur = Duration(milliseconds: 0);
-
+/*********************************************
+ * SLIDER
+**********************************************/
     return Slider(
         value: _duration != null
             ? _duration > defdur
@@ -214,6 +227,10 @@ class _SongWidgetState extends State<SongWidget> {
                 ? _duration.inMilliseconds.toDouble()
                 : 0.0
             : 0.0);
+/*********************************************
+ * CODE SLIDER
+ * UN-USED
+**********************************************/
     // value: _position.inSeconds.toDouble(),
     // min: 0.0,
     // max: _duration.inSeconds.toDouble(),
@@ -225,12 +242,18 @@ class _SongWidgetState extends State<SongWidget> {
     // });
   }
 
+/*********************************************
+ * SEEK TO SECOND
+**********************************************/
   void seekToSecond(int second) {
     Duration newDuration = Duration(seconds: second);
     timeElapsed = newDuration;
     advancedPlayer.seek(newDuration);
   }
 
+/*********************************************
+ * RESET PLAYER
+**********************************************/
   void _resetPlayer() {
     _position = Duration();
     _duration = Duration();
@@ -238,6 +261,9 @@ class _SongWidgetState extends State<SongWidget> {
     advancedPlayer.stop();
   }
 
+/*********************************************
+   * DURATION WIDGET
+**********************************************/
   Widget _durationWidget() {
     return Padding(
       padding: EdgeInsets.only(

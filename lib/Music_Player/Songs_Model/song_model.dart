@@ -1,3 +1,6 @@
+/*********************************************
+ * SONGS INFO MODEL
+**********************************************/
 class SongInfo {
   final String category;
   final String song;

@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+/*********************************************
+ * TO MAKE UI
+**********************************************/
 class UIModelClass {
   @required
   String txt;
@@ -12,6 +15,12 @@ class UIModelClass {
   });
 }
 
+/*********************************************
+ * LIST OF IMAGES
+ * AND NAME
+ * USED IN HOMESCREEN TO MAKE
+ * CATEGORIES
+**********************************************/
 List<UIModelClass> uimodelclass = [
   UIModelClass(
     txt: 'Calm Music',
