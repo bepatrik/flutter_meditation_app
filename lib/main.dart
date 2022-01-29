@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       ),
 
       ///home
-      home: AudioPlayerScreen(),
+      home: HomePage(),
 
       ///routes
       routes: {

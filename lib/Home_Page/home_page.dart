@@ -11,17 +11,20 @@ class HomePage extends StatelessWidget {
   static final id = '/HomePage';
   @override
   Widget build(BuildContext context) {
+    ///final size
+    final Size s = MediaQuery.of(context).size;
+
     return Scaffold(
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: double.infinity,
+        height: s.height,
+        width: s.width,
         child: SingleChildScrollView(
           ///Main Container
           child: Column(
             children: [
               Container(
                 height: 300,
-                width: double.infinity,
+                width: s.width,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
@@ -111,7 +114,6 @@ class HomePage extends StatelessWidget {
                             padding: EdgeInsets.only(left: 15, top: 10),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Colors.blue,
                                 borderRadius: BorderRadius.circular(25),
                                 image: DecorationImage(
                                   image: CachedNetworkImageProvider(
