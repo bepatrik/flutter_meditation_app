@@ -29,6 +29,7 @@ class LogInScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Card(
+              shadowColor: Colors.grey,
               elevation: 2,
               child: Container(
                 height: s.height * 0.6,

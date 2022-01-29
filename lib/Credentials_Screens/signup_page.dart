@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Constants/constants.dart';
-import 'package:flutter_meditation_app/Custom_widgets/login_signup_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -30,6 +29,7 @@ class SignUpScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Card(
+              shadowColor: Colors.grey,
               elevation: 2,
               child: Container(
                 height: s.height * 0.6,
@@ -131,7 +131,7 @@ class SignUpScreen extends StatelessWidget {
                         Center(
                           child: TextButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, SignUpScreen.id);
+                              Navigator.pop(context);
                             },
                             child: Text('LOGIN NOW!',
                                 style: GoogleFonts.lateef(

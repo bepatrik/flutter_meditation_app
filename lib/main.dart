@@ -3,7 +3,6 @@ import 'package:flutter_meditation_app/Credentials_Screens/login_page.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/signup_page.dart';
 import 'package:flutter_meditation_app/Home_Page/home_page.dart';
 import 'package:flutter_meditation_app/Music_Player/Songs_Widgets/audio_screen.dart';
-import 'package:flutter_meditation_app/Music_Player/Songs_Widgets/song_widget.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
       ),
 
       ///home
-      home: HomePage(),
+      home: AudioPlayerScreen(),
 
       ///routes
       routes: {

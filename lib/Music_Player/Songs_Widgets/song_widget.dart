@@ -193,16 +193,36 @@ class _SongWidgetState extends State<SongWidget> {
   }
 
   Widget slider() {
+    ///the defdur is default duration i made like this:
+    var defdur = Duration(milliseconds: 0);
+
     return Slider(
-        value: _position.inSeconds.toDouble(),
-        min: 0.0,
-        max: _duration.inSeconds.toDouble(),
-        onChanged: (double value) {
+        value: _duration != null
+            ? _duration > defdur
+                ? _position.inMilliseconds.toDouble() ?? 0.0
+                : 0.0
+            : 0.0,
+        onChanged: (double val) {
           setState(() {
-            seekToSecond(value.toInt());
-            value = value;
+            return seekToSecond((val / 1000).roundToDouble().round());
           });
-        });
+          val = val;
+        },
+        min: 0.0,
+        max: _duration != null
+            ? _duration > defdur
+                ? _duration.inMilliseconds.toDouble()
+                : 0.0
+            : 0.0);
+    // value: _position.inSeconds.toDouble(),
+    // min: 0.0,
+    // max: _duration.inSeconds.toDouble(),
+    // onChanged: (double val) {
+    //   setState(() {
+    //     seekToSecond(val.toInt());
+    //     val = val;
+    //   });
+    // });
   }
 
   void seekToSecond(int second) {
