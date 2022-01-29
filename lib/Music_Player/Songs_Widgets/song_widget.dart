@@ -48,27 +48,25 @@ class _SongWidgetState extends State<SongWidget> {
     audioCache = new AudioCache(fixedPlayer: advancedPlayer);
 
     advancedPlayer.onDurationChanged.listen((d) {
-      _duration = d;
-      // timeElapsed = d;
+      setState(() {
+        _duration = d;
+        timeElapsed = d;
+      });
     });
 
     advancedPlayer.onAudioPositionChanged.listen((p) {
-      _position = p;
-      // timeElapsed = p;
+      setState(() {
+        _position = p;
+        timeElapsed = p;
+      });
     });
 
     advancedPlayer.onPlayerStateChanged.listen((PlayerState s) {
       if (s == PlayerState.COMPLETED) {
         _resetPlayer();
-        if (songIndex == widget.songList.length - 1) {
-          songIndex = 0;
-        } else {
-          songIndex = songIndex + 1;
-        }
+        songIndex = songIndex == widget.songList.length - 1 ? 0 : songIndex + 1;
       }
-      setState(() {
-        playerState = s;
-      });
+      setState(() => playerState = s);
     });
   }
 
