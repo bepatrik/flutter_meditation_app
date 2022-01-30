@@ -53,6 +53,14 @@ class LogInScreen extends StatelessWidget {
                   border: Border.all(),
                   borderRadius: BorderRadius.circular(20),
                 ),
+/********************************************
+ * Using MediaQuery
+ * Which will make Responsive Deisgn 
+ * According to Screen
+ * s.height (height of screen 100)
+ * 100 * 0.5 = 50
+ * this will ocupy 50 height according of every screen
+**********************************************/
                 height: s.height * 0.5,
                 width: s.width,
                 child: Center(
@@ -71,7 +79,7 @@ class LogInScreen extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: TextFormField(
                             controller: emailC,
                             decoration: InputDecoration(
@@ -90,7 +98,7 @@ class LogInScreen extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: TextFormField(
                             controller: passC,
                             obscureText: true,
@@ -114,7 +122,7 @@ class LogInScreen extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: MaterialButton(
                             shape: StadiumBorder(),
                             height: 65,
@@ -135,14 +143,16 @@ class LogInScreen extends StatelessWidget {
                         ),
                         Center(
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Forget Password?',
-                              style: GoogleFonts.lateef(
-                                textStyle: TextStyle(
-                                  fontSize: 20.5,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
+                            padding: EdgeInsets.all(8.0),
+                            child: TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Forget Password?',
+                                style: GoogleFonts.lateef(
+                                  textStyle: TextStyle(
+                                    fontSize: 20.5,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
@@ -153,7 +163,7 @@ class LogInScreen extends StatelessWidget {
                           children: [
                             Center(
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Text(
                                   "Don't have account?",
                                   style: GoogleFonts.lateef(

@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Constants/constants.dart';
@@ -54,6 +53,14 @@ class SignUpScreen extends StatelessWidget {
                   border: Border.all(),
                   borderRadius: BorderRadius.circular(20),
                 ),
+/********************************************
+ * Using MediaQuery
+ * Which will make Responsive Deisgn 
+ * According to Screen
+ * s.height (height of screen 100)
+ * 100 * 0.6 = 60
+ * this will ocupy 60 height according of every screen
+**********************************************/
                 height: s.height * 0.6,
                 width: s.width,
                 child: Center(
@@ -71,7 +78,7 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: TextFormField(
                             controller: nameC,
                             decoration: InputDecoration(
@@ -90,7 +97,7 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: TextFormField(
                             controller: emailC,
                             decoration: InputDecoration(
@@ -109,7 +116,7 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: TextFormField(
                             controller: passC,
                             obscureText: true,
@@ -133,7 +140,7 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: MaterialButton(
                             shape: StadiumBorder(),
                             height: 65,
@@ -154,14 +161,16 @@ class SignUpScreen extends StatelessWidget {
                         ),
                         Center(
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Forget Password?',
-                              style: GoogleFonts.lateef(
-                                textStyle: TextStyle(
-                                  fontSize: 20.5,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
+                            padding: EdgeInsets.all(8.0),
+                            child: TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Forget Password?',
+                                style: GoogleFonts.lateef(
+                                  textStyle: TextStyle(
+                                    fontSize: 20.5,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
@@ -172,7 +181,7 @@ class SignUpScreen extends StatelessWidget {
                           children: [
                             Center(
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Text(
                                   "Already have account?",
                                   style: GoogleFonts.lateef(
@@ -195,7 +204,6 @@ class SignUpScreen extends StatelessWidget {
                                   style: GoogleFonts.lateef(
                                     textStyle: TextStyle(
                                       fontSize: 20.5,
-                                      color: Colors.blue,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
