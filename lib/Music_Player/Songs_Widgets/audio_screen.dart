@@ -3,6 +3,7 @@ import 'package:flutter_meditation_app/Music_Player/Songs_Model/song_model.dart'
 import 'package:flutter_meditation_app/Music_Player/Songs_Widgets/song_widget.dart';
 
 class AudioPlayerScreen extends StatelessWidget {
+  ///Final id
   static final id = '/AudioPlayerScreen';
   @override
   Widget build(BuildContext context) {
@@ -21,31 +22,31 @@ class AudioPlayerScreen extends StatelessWidget {
       SongInfo(
         category: 'Calm Sounds',
         song: 'calm1.mpeg',
-        artist: 'Nature',
+        artist: 'Artist 1',
         image: 'images/music1.png',
       ),
       SongInfo(
         category: 'Calm Sounds',
         song: 'calm2.mpeg',
-        artist: 'Nature',
+        artist: 'Artist 2',
         image: 'images/music1.png',
       ),
       SongInfo(
         category: 'Calm Sounds',
         song: 'calm3.mpeg',
-        artist: 'Nature',
+        artist: 'Artist 3',
         image: 'images/music1.png',
       ),
       SongInfo(
         category: 'Calm Sounds',
         song: 'calm4.mpeg',
-        artist: 'Nature',
+        artist: 'Artist 4',
         image: 'images/music1.png',
       ),
       SongInfo(
         category: 'Calm Sounds',
         song: 'calm5.mpeg',
-        artist: 'Nature',
+        artist: 'Artist 5',
         image: 'images/music1.png',
       ),
 /*********************************************
@@ -60,25 +61,25 @@ class AudioPlayerScreen extends StatelessWidget {
       SongInfo(
         category: 'Fast Music',
         song: 'music_(2).mpeg',
-        artist: 'Faraz',
+        artist: 'Faraz Ahmad',
         image: 'images/music1.png',
       ),
       SongInfo(
         category: 'Fast Music',
         song: 'music_(4).mpeg',
-        artist: 'Faraz',
+        artist: 'Zeeshan Tariq',
         image: 'images/music1.png',
       ),
       SongInfo(
         category: 'Fast Music',
         song: 'music_(4).mpeg',
-        artist: 'Faraz',
+        artist: 'Hassan Abbas',
         image: 'images/music1.png',
       ),
       SongInfo(
         category: 'Fast Music',
         song: 'music_(5).mpeg',
-        artist: 'Faraz',
+        artist: 'Zubair ch',
         image: 'images/music1.png',
       ),
 /*********************************************
@@ -87,31 +88,31 @@ class AudioPlayerScreen extends StatelessWidget {
       SongInfo(
         category: 'Nature Music',
         song: 'nature1.mpeg',
-        artist: 'Faraz',
+        artist: 'Artist 1',
         image: 'images/music1.png',
       ),
       SongInfo(
         category: 'Nature Music',
         song: 'nature2.mpeg',
-        artist: 'Faraz',
+        artist: 'Artist 2',
         image: 'images/music1.png',
       ),
       SongInfo(
         category: 'Nature Music',
         song: 'nature3.mpeg',
-        artist: 'Faraz',
+        artist: 'Artist 3',
         image: 'images/music1.png',
       ),
       SongInfo(
         category: 'Nature Music',
         song: 'nature4.mpeg',
-        artist: 'Faraz',
+        artist: 'Artist 4',
         image: 'images/music1.png',
       ),
       SongInfo(
         category: 'Nature Music',
         song: 'nature5.mpeg',
-        artist: 'Faraz',
+        artist: 'Artist 5',
         image: 'images/music1.png',
       ),
 /*********************************************
@@ -120,12 +121,12 @@ class AudioPlayerScreen extends StatelessWidget {
       SongInfo(
         category: 'Sleepy Music',
         song: 'sleepy1.mpeg',
-        artist: 'Faraz',
+        artist: 'Zeeshan Baaghi',
         image: 'images/music1.png',
       ),
     ];
 
-    ///Return
+    ///Sending Data to Screen Song_Widget
     return Column(
       children: [
         SongWidget(

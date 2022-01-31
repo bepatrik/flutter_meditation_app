@@ -131,14 +131,23 @@ class _SongWidgetState extends State<SongWidget> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              ///Play previous Song Method
               _playBack(),
+
+              ///Pause & Play
               _play(),
+
+              ///Play Next Song Method
               _fastForward(),
             ],
           ),
         ),
+
+        ///Slider
         slider(),
-        _durationWidget()
+
+        ///TImer Duration Widget
+        _durationWidget(),
       ],
     );
   }
