@@ -17,6 +17,11 @@ class LogInScreen extends StatelessWidget {
   ///Controllers
   TextEditingController emailC = TextEditingController();
   TextEditingController passC = TextEditingController();
+
+/*********************************************
+ * SAVEFORM METHOD
+**********************************************/
+
   @override
   Widget build(BuildContext context) {
     ///final size
@@ -52,6 +57,7 @@ class LogInScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(),
                   borderRadius: BorderRadius.circular(20),
+                  color: Colors.grey.withOpacity(0.2),
                 ),
 /********************************************
  * Using MediaQuery
@@ -145,7 +151,9 @@ class LogInScreen extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                print('Forget Password?');
+                              },
                               child: Text(
                                 'Forget Password?',
                                 style: GoogleFonts.lateef(
@@ -179,7 +187,8 @@ class LogInScreen extends StatelessWidget {
                             Center(
                               child: TextButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, SignUpScreen.id);
+                                  print('REGISTER ACCOUNT');
+                                  Navigator.pop(context);
                                 },
                                 child: Text(
                                   'REGISTER ACCOUNT',

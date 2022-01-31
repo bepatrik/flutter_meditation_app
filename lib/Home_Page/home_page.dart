@@ -13,6 +13,11 @@ class HomePage extends StatelessWidget {
 
     ///Scaffold
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurpleAccent,
+        title: Text('Home Screen'),
+        centerTitle: true,
+      ),
       body: Container(
         height: s.height,
         width: s.width,
@@ -21,7 +26,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: s.height / 2,
+                height: s.height * 0.49,
                 width: s.width,
                 decoration: BoxDecoration(
                   image: DecorationImage(
@@ -67,7 +72,7 @@ class HomePage extends StatelessWidget {
               ///Text Categories & See All
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Padding(
-                    padding: EdgeInsets.only(left: 15),
+                    padding: EdgeInsets.only(left: 15, top: 10),
                     child: Center(
                       child: Text(
                         'Categories',
@@ -80,7 +85,7 @@ class HomePage extends StatelessWidget {
                       ),
                     )),
                 Padding(
-                  padding: EdgeInsets.only(right: 15),
+                  padding: EdgeInsets.only(right: 15, top: 10),
                   child: Center(
                     child: Text(
                       'See all',
@@ -144,7 +149,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               )
             ],

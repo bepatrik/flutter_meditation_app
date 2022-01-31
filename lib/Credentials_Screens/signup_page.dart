@@ -2,6 +2,8 @@ import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Constants/constants.dart';
+import 'package:flutter_meditation_app/Credentials_Screens/login_page.dart';
+import 'package:flutter_meditation_app/Home_Page/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // ignore: must_be_immutable
@@ -52,6 +54,7 @@ class SignUpScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(),
                   borderRadius: BorderRadius.circular(20),
+                  color: Colors.grey.withOpacity(0.2),
                 ),
 /********************************************
  * Using MediaQuery
@@ -163,7 +166,9 @@ class SignUpScreen extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                print('Forget Password?');
+                              },
                               child: Text(
                                 'Forget Password?',
                                 style: GoogleFonts.lateef(
@@ -197,7 +202,8 @@ class SignUpScreen extends StatelessWidget {
                             Center(
                               child: TextButton(
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  print('LOGIN NOW!');
+                                  Navigator.pushNamed(context, LogInScreen.id);
                                 },
                                 child: Text(
                                   'LOGIN NOW!',
