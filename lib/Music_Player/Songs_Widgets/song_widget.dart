@@ -30,13 +30,13 @@ class SongWidget extends StatefulWidget {
 }
 
 class _SongWidgetState extends State<SongWidget> {
+  ///Variables
   Duration _duration = new Duration();
   Duration _position = new Duration();
   AudioPlayer advancedPlayer;
   AudioCache audioCache;
   PlayerState playerState;
   int songIndex = 0;
-
   Duration timeElapsed = new Duration();
 
   @override
@@ -74,6 +74,9 @@ class _SongWidgetState extends State<SongWidget> {
 
   @override
   Widget build(BuildContext context) {
+    ///Final size
+    final Size s = MediaQuery.of(context).size;
+
     return Column(
       children: [
         Container(
@@ -103,7 +106,7 @@ class _SongWidgetState extends State<SongWidget> {
           child: Column(
             children: [
               Text(
-                widget.songList[songIndex].category,
+                "${widget.songList[songIndex].category}",
                 style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,
@@ -113,7 +116,7 @@ class _SongWidgetState extends State<SongWidget> {
                 height: 20,
               ),
               Text(
-                widget.songList[songIndex].artist,
+                "Artist : ${widget.songList[songIndex].artist}",
                 style: TextStyle(
                   fontSize: 15,
                   color: Colors.grey.shade800,
@@ -178,9 +181,13 @@ class _SongWidgetState extends State<SongWidget> {
           size: 30,
         ),
         onPressed: () {
-          playerState == PlayerState.PLAYING
-              ? advancedPlayer.pause()
-              : audioCache.play(widget.songList[songIndex].song);
+          setState(() {
+            playerState == PlayerState.PLAYING
+                ? advancedPlayer.pause()
+                : audioCache.play(
+                    widget.songList[songIndex].song,
+                  );
+          });
         });
   }
 
@@ -197,8 +204,11 @@ class _SongWidgetState extends State<SongWidget> {
         onPressed: () {
           setState(() {
             _resetPlayer();
-            songIndex =
-                songIndex == widget.songList.length - 1 ? 0 : songIndex + 1;
+            if (songIndex == widget.songList.length - 1) {
+              songIndex = 0;
+            } else {
+              songIndex = songIndex + 1;
+            }
           });
         });
   }
@@ -210,6 +220,9 @@ class _SongWidgetState extends State<SongWidget> {
  * SLIDER
 **********************************************/
     return Slider(
+        activeColor: Colors.blue,
+        inactiveColor: Colors.grey[300],
+        thumbColor: Colors.white,
         value: _duration != null
             ? _duration > defdur
                 ? _position.inMilliseconds.toDouble() ?? 0.0
@@ -277,7 +290,7 @@ class _SongWidgetState extends State<SongWidget> {
             "${timeElapsed.inMinutes.remainder(60)}:${timeElapsed.inSeconds.remainder(60)}",
             style: TextStyle(
               color: Colors.grey.shade600,
-              fontSize: 12,
+              fontSize: 12.5,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -285,7 +298,7 @@ class _SongWidgetState extends State<SongWidget> {
             "${_duration.inMinutes.remainder(60)}:${_duration.inSeconds.remainder(60)}",
             style: TextStyle(
               color: Colors.grey.shade600,
-              fontSize: 12,
+              fontSize: 12.5,
               fontWeight: FontWeight.bold,
             ),
           )
