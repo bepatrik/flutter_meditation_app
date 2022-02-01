@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       ///Title
-      title: 'Flutter-Meditation-App',
+      title: 'Meditation-App',
 
       ///Banner
       debugShowCheckedModeBanner: false,
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       ),
 
       ///home
-      home: AudioPlayerScreen(),
+      home: SplashScreen(),
 
       ///routes
       routes: {

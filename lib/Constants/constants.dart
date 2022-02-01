@@ -1,3 +1,5 @@
+import 'package:fluttertoast/fluttertoast.dart';
+
 /*********************************************
  * IMAGE IS FROM NETWORK
  * FOR BACKGROUND IMAGE
@@ -11,3 +13,11 @@ String bgLogInImgPage =
 **********************************************/
 String splashImgBg =
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUNc9UDh-5oG3sdLbrqm1CvmVCdFv8fEWgk90wrmakvS-MToj4t5Ii0aDqgaMuenYpcc8&usqp=CAU';
+
+/*********************************************
+ * Making FlutterToast
+ * Globally Accessible
+**********************************************/
+tostmsg(String msg) {
+  Fluttertoast.showToast(msg: msg);
+}
