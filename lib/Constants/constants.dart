@@ -18,6 +18,6 @@ String splashImgBg =
  * Making FlutterToast
  * Globally Accessible
 **********************************************/
-tostmsg(String msg) {
+toastmsg(String msg) {
   Fluttertoast.showToast(msg: msg);
 }
