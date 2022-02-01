@@ -31,12 +31,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
   saveForm(BuildContext context) async {
     if (formKey.currentState.validate()) {
       print(emailC.text);
-      await auth.createUserWithEmailAndPassword(
+      await auth
+          .createUserWithEmailAndPassword(
         email: emailC.text.trim(),
         password: passC.text.trim(),
-      );
+      )
+/*********************************************
+ * This will catch error
+ * Error will be shown in toast
+**********************************************/
+          .catchError((errorMsg) {
+        toastmsg(errorMsg.toString());
+      });
       var u = auth.currentUser.uid;
       if (u != null) {
+        userRef.child(auth.currentUser.uid).set({
+          "name": nameC.text,
+          "email": emailC.text,
+          "password": passC.text,
+        });
         Navigator.pushNamed(context, LogInScreen.id);
       }
     }
@@ -104,132 +117,149 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Center(
                   child: Form(
                     key: formKey,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          Text(
-                            'SIGNUP FORM',
-                            style: GoogleFonts.lateef(
-                              textStyle: TextStyle(
-                                fontSize: 35,
-                                fontWeight: FontWeight.bold,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          'SIGNUP FORM',
+                          style: GoogleFonts.lateef(
+                            textStyle: TextStyle(
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: TextFormField(
+                            controller: nameC,
+                            validator: (v) {
+                              if (nameC.text.length < 3) {
+                                return 'Name must be greater than 3';
+                              } else {
+                                return null;
+                              }
+                            },
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              prefixIcon: Icon(
+                                Icons.person,
+                                color: Colors.black,
+                              ),
+                              labelText: 'Enter Name',
+                              labelStyle: TextStyle(
+                                color: Colors.black,
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: TextFormField(
-                              controller: nameC,
-                              validator: (v) {
-                                if (nameC.text.length < 3) {
-                                  return 'Name must be greater than 3';
-                                } else {
-                                  return null;
-                                }
-                              },
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                prefixIcon: Icon(
-                                  Icons.person,
-                                  color: Colors.black,
-                                ),
-                                labelText: 'Enter Name',
-                                labelStyle: TextStyle(
-                                  color: Colors.black,
-                                ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: TextFormField(
+                            controller: emailC,
+                            validator: (v) {
+                              if (!emailC.text.contains("@gmail.com")) {
+                                return 'Email must contain @gmail.com';
+                              } else {
+                                return null;
+                              }
+                            },
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              prefixIcon: Icon(
+                                Icons.email,
+                                color: Colors.black,
+                              ),
+                              labelText: 'Enter Email',
+                              labelStyle: TextStyle(
+                                color: Colors.black,
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: TextFormField(
-                              controller: emailC,
-                              validator: (v) {
-                                if (!emailC.text.contains("@gmail.com")) {
-                                  return 'Email must contain @gmail.com';
-                                } else {
-                                  return null;
-                                }
-                              },
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                prefixIcon: Icon(
-                                  Icons.email,
-                                  color: Colors.black,
-                                ),
-                                labelText: 'Enter Email',
-                                labelStyle: TextStyle(
-                                  color: Colors.black,
-                                ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: TextFormField(
+                            controller: passC,
+                            validator: (v) {
+                              if (passC.text.length < 7) {
+                                return 'Name must be greater than 7';
+                              } else {
+                                return null;
+                              }
+                            },
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              prefixIcon: Icon(
+                                Icons.lock,
+                                color: Colors.black,
+                              ),
+                              labelText: 'Enter Password',
+                              labelStyle: TextStyle(
+                                color: Colors.black,
+                              ),
+                              suffixIcon: Icon(
+                                Icons.visibility,
+                                color: Colors.black,
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: TextFormField(
-                              controller: passC,
-                              validator: (v) {
-                                if (passC.text.length < 7) {
-                                  return 'Name must be greater than 7';
-                                } else {
-                                  return null;
-                                }
-                              },
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                prefixIcon: Icon(
-                                  Icons.lock,
-                                  color: Colors.black,
-                                ),
-                                labelText: 'Enter Password',
-                                labelStyle: TextStyle(
-                                  color: Colors.black,
-                                ),
-                                suffixIcon: Icon(
-                                  Icons.visibility,
-                                  color: Colors.black,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: MaterialButton(
+                            shape: StadiumBorder(),
+                            height: 65,
+                            minWidth: s.width,
+                            color: Colors.blue,
+                            child: Text(
+                              'SIGNUP',
+                              style: GoogleFonts.lateef(
+                                textStyle: TextStyle(
+                                  fontSize: 25.5,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
+                            onPressed: () {
+                              saveForm(context);
+                            },
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: MaterialButton(
-                              shape: StadiumBorder(),
-                              height: 65,
-                              minWidth: s.width,
-                              color: Colors.blue,
-                              child: Text(
-                                'SIGNUP',
-                                style: GoogleFonts.lateef(
-                                  textStyle: TextStyle(
-                                    fontSize: 25.5,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Already have account?",
+                                  style: GoogleFonts.lateef(
+                                    textStyle: TextStyle(
+                                      fontSize: 20.5,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
-                              onPressed: () {
-                                saveForm(context);
-                              },
                             ),
-                          ),
-                          Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(8.0),
+                            Center(
                               child: TextButton(
                                 onPressed: () {
-                                  print('Forget Password?');
+                                  print('LOGIN NOW!');
+                                  Navigator.pushNamed(context, LogInScreen.id);
                                 },
                                 child: Text(
-                                  'Forget Password?',
+                                  'LOGIN NOW!',
                                   style: GoogleFonts.lateef(
                                     textStyle: TextStyle(
                                       fontSize: 20.5,
@@ -239,47 +269,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 ),
                               ),
                             ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Center(
-                                child: Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text(
-                                    "Already have account?",
-                                    style: GoogleFonts.lateef(
-                                      textStyle: TextStyle(
-                                        fontSize: 20.5,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Center(
-                                child: TextButton(
-                                  onPressed: () {
-                                    print('LOGIN NOW!');
-                                    Navigator.pushNamed(
-                                        context, LogInScreen.id);
-                                  },
-                                  child: Text(
-                                    'LOGIN NOW!',
-                                    style: GoogleFonts.lateef(
-                                      textStyle: TextStyle(
-                                        fontSize: 20.5,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),

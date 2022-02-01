@@ -32,10 +32,19 @@ class _LogInScreenState extends State<LogInScreen> {
   saveForm(BuildContext context) async {
     if (formKey.currentState.validate()) {
       print(emailC.text);
-      await auth.signInWithEmailAndPassword(
+      await auth
+          .signInWithEmailAndPassword(
         email: emailC.text.trim(),
         password: passC.text.trim(),
-      );
+      )
+/*********************************************
+ * This will catch error
+ * Error will be shown in toast
+**********************************************/
+          .catchError((errorMsg) {
+        toastmsg(errorMsg.toString());
+      });
+      ;
       var u = auth.currentUser.uid;
       if (u != null) {
         Navigator.pushReplacementNamed(
@@ -106,107 +115,142 @@ class _LogInScreenState extends State<LogInScreen> {
                 child: Center(
                   child: Form(
                     key: formKey,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'LOGIN FORM',
-                            style: GoogleFonts.lateef(
-                              textStyle: TextStyle(
-                                fontSize: 35,
-                                fontWeight: FontWeight.bold,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          'LOGIN FORM',
+                          style: GoogleFonts.lateef(
+                            textStyle: TextStyle(
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: TextFormField(
+                            controller: emailC,
+                            validator: (v) {
+                              if (!emailC.text.contains("@gmail.com")) {
+                                return 'Wrong email';
+                              } else {
+                                return null;
+                              }
+                            },
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              prefixIcon: Icon(
+                                Icons.email,
+                                color: Colors.black,
+                              ),
+                              labelText: 'Enter Email',
+                              labelStyle: TextStyle(
+                                color: Colors.black,
                               ),
                             ),
                           ),
-                          Padding(
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: TextFormField(
+                            controller: passC,
+                            validator: (v) {
+                              if (passC.text.length < 7) {
+                                return 'Wrong Password';
+                              } else {
+                                return null;
+                              }
+                            },
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              prefixIcon: Icon(
+                                Icons.lock,
+                                color: Colors.black,
+                              ),
+                              labelText: 'Enter Password',
+                              labelStyle: TextStyle(
+                                color: Colors.black,
+                              ),
+                              suffixIcon: Icon(
+                                Icons.visibility,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: MaterialButton(
+                            shape: StadiumBorder(),
+                            height: 65,
+                            minWidth: s.width,
+                            color: Colors.blue,
+                            child: Text(
+                              'LOGIN',
+                              style: GoogleFonts.lateef(
+                                textStyle: TextStyle(
+                                  fontSize: 25.5,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            onPressed: () {
+                              saveForm(context);
+                            },
+                          ),
+                        ),
+                        Center(
+                          child: Padding(
                             padding: EdgeInsets.all(8.0),
-                            child: TextFormField(
-                              controller: emailC,
-                              validator: (v) {
-                                if (!emailC.text.contains("@gmail.com")) {
-                                  return 'Wrong email';
-                                } else {
-                                  return null;
-                                }
+                            child: TextButton(
+                              onPressed: () {
+                                print('Forget Password?');
                               },
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                prefixIcon: Icon(
-                                  Icons.email,
-                                  color: Colors.black,
-                                ),
-                                labelText: 'Enter Email',
-                                labelStyle: TextStyle(
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: TextFormField(
-                              controller: passC,
-                              validator: (v) {
-                                if (passC.text.length < 7) {
-                                  return 'Wrong Password';
-                                } else {
-                                  return null;
-                                }
-                              },
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                prefixIcon: Icon(
-                                  Icons.lock,
-                                  color: Colors.black,
-                                ),
-                                labelText: 'Enter Password',
-                                labelStyle: TextStyle(
-                                  color: Colors.black,
-                                ),
-                                suffixIcon: Icon(
-                                  Icons.visibility,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: MaterialButton(
-                              shape: StadiumBorder(),
-                              height: 65,
-                              minWidth: s.width,
-                              color: Colors.blue,
                               child: Text(
-                                'LOGIN',
+                                'Forget Password?',
                                 style: GoogleFonts.lateef(
                                   textStyle: TextStyle(
-                                    fontSize: 25.5,
-                                    color: Colors.white,
+                                    fontSize: 20.5,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
-                              onPressed: () {
-                                saveForm(context);
-                              },
                             ),
                           ),
-                          Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(8.0),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Don't have account?",
+                                  style: GoogleFonts.lateef(
+                                    textStyle: TextStyle(
+                                      fontSize: 20.5,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Center(
                               child: TextButton(
                                 onPressed: () {
-                                  print('Forget Password?');
+                                  print('REGISTER ACCOUNT');
+                                  Navigator.pop(context);
                                 },
                                 child: Text(
-                                  'Forget Password?',
+                                  'REGISTER ACCOUNT',
                                   style: GoogleFonts.lateef(
                                     textStyle: TextStyle(
                                       fontSize: 20.5,
@@ -216,46 +260,9 @@ class _LogInScreenState extends State<LogInScreen> {
                                 ),
                               ),
                             ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Center(
-                                child: Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text(
-                                    "Don't have account?",
-                                    style: GoogleFonts.lateef(
-                                      textStyle: TextStyle(
-                                        fontSize: 20.5,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Center(
-                                child: TextButton(
-                                  onPressed: () {
-                                    print('REGISTER ACCOUNT');
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                    'REGISTER ACCOUNT',
-                                    style: GoogleFonts.lateef(
-                                      textStyle: TextStyle(
-                                        fontSize: 20.5,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),

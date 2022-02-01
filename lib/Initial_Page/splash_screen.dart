@@ -27,6 +27,12 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     ///Final size
     final Size s = MediaQuery.of(context).size;

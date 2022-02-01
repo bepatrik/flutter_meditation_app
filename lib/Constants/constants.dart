@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 /*********************************************
@@ -21,3 +22,12 @@ String splashImgBg =
 toastmsg(String msg) {
   Fluttertoast.showToast(msg: msg);
 }
+
+/*********************************************
+ * Making User's Collection
+ * Globally Accessible
+**********************************************/
+DatabaseReference userRef =
+    FirebaseDatabase.instance.ref().child("User's Info");
+
+FirebaseDatabase database = FirebaseDatabase.instance;
