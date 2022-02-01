@@ -28,30 +28,36 @@ class _LogInScreenState extends State<LogInScreen> {
 
 /*********************************************
  * SAVEFORM METHOD
+ * We'll make it in Try and Catch method
+ * it will save app from crash
 **********************************************/
   saveForm(BuildContext context) async {
-    if (formKey.currentState.validate()) {
-      print(emailC.text);
-      await auth
-          .signInWithEmailAndPassword(
-        email: emailC.text.trim(),
-        password: passC.text.trim(),
-      )
+    try {
+      if (formKey.currentState.validate()) {
+        print(emailC.text);
+        await auth
+            .signInWithEmailAndPassword(
+          email: emailC.text.trim(),
+          password: passC.text.trim(),
+        )
 /*********************************************
  * This will catch error
  * Error will be shown in toast
 **********************************************/
-          .catchError((errorMsg) {
-        toastmsg(errorMsg.toString());
-      });
-      ;
-      var u = auth.currentUser.uid;
-      if (u != null) {
-        Navigator.pushReplacementNamed(
-          context,
-          HomePage.id,
-        );
+            .catchError((errorMsg) {
+          toastmsg(errorMsg.toString());
+        });
+        ;
+        var u = auth.currentUser.uid;
+        if (u != null) {
+          Navigator.pushReplacementNamed(
+            context,
+            HomePage.id,
+          );
+        }
       }
+    } catch (e) {
+      toastmsg(e.toString());
     }
   }
 

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       ),
 
       ///home
-      home: SplashScreen(),
+      home: HomePage(),
 
       ///routes
       routes: {

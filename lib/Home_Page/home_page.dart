@@ -1,18 +1,51 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_meditation_app/Credentials_Pages/login_page.dart';
 import 'package:flutter_meditation_app/Music_Player/UI_Model/ui_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   ///final id
   static final id = '/HomePage';
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     ///final size
     final Size s = MediaQuery.of(context).size;
 
+    ///LogOut Method
+    _logout() async {
+      FirebaseAuth auth = FirebaseAuth.instance;
+      await auth.signOut();
+      Navigator.pushReplacementNamed(context, LogInScreen.id);
+    }
+
     ///Scaffold
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Screen'),
+        centerTitle: true,
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (_) => [
+              PopupMenuItem(
+                onTap: () {
+                  print('LogOut');
+                  _logout();
+                },
+                child: Text('LogOut'),
+              ),
+            ],
+          ),
+        ],
+      ),
+      drawer: Drawer(),
       body: Container(
         height: s.height,
         width: s.width,

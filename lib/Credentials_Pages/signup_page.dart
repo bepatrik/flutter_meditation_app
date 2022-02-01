@@ -27,31 +27,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
   ///Let's create object firebaseAuth
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  ///Now we'll make SaveForm Function
+/*********************************************
+ * SAVEFORM METHOD
+ * We'll make it in Try and Catch method
+ * it will save app from crash
+**********************************************/
   saveForm(BuildContext context) async {
-    if (formKey.currentState.validate()) {
-      print(emailC.text);
-      await auth
-          .createUserWithEmailAndPassword(
-        email: emailC.text.trim(),
-        password: passC.text.trim(),
-      )
+    try {
+      if (formKey.currentState.validate()) {
+        print(emailC.text);
+        await auth
+            .createUserWithEmailAndPassword(
+          email: emailC.text.trim(),
+          password: passC.text.trim(),
+        )
 /*********************************************
  * This will catch error
  * Error will be shown in toast
 **********************************************/
-          .catchError((errorMsg) {
-        toastmsg(errorMsg.toString());
-      });
-      var u = auth.currentUser.uid;
-      if (u != null) {
-        userRef.child(auth.currentUser.uid).set({
-          "name": nameC.text,
-          "email": emailC.text,
-          "password": passC.text,
+            .catchError((errorMsg) {
+          toastmsg(errorMsg.toString());
         });
-        Navigator.pushNamed(context, LogInScreen.id);
+        var u = auth.currentUser.uid;
+        if (u != null) {
+          userRef.child(auth.currentUser.uid).set({
+            "name": nameC.text,
+            "email": emailC.text,
+            "password": passC.text,
+          });
+          Navigator.pushNamed(context, LogInScreen.id);
+        }
       }
+    } catch (e) {
+      toastmsg(e.toString());
     }
   }
 
