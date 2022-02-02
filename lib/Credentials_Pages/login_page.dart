@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:auth_buttons/auth_buttons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -50,7 +49,6 @@ class _LogInScreenState extends State<LogInScreen> {
             .catchError((errorMsg) {
           toastmsg(errorMsg.toString());
         });
-        ;
         var u = auth.currentUser.uid;
         if (u != null) {
           Navigator.pushReplacementNamed(

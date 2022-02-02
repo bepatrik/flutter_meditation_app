@@ -82,210 +82,213 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     ///Scaffold
     return Scaffold(
-      body: Container(
-        height: s.height,
-        width: s.width,
-/*********************************************
- * PROPERTY DECORATION IMAGE
- * TO MAKE BACKGROUND IMAGE
- * IMAGE IS FROM NETWORK
-**********************************************/
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: CachedNetworkImageProvider(
-              bgLogInImgPage,
-            ),
-            fit: BoxFit.fitHeight,
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: 10,
-                sigmaY: 10,
+      body: SingleChildScrollView(
+        child: Container(
+          height: s.height,
+          width: s.width,
+          /*********************************************
+       * PROPERTY DECORATION IMAGE
+       * TO MAKE BACKGROUND IMAGE
+       * IMAGE IS FROM NETWORK
+      **********************************************/
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: CachedNetworkImageProvider(
+                bgLogInImgPage,
               ),
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(),
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey.withOpacity(0.2),
+              fit: BoxFit.fitHeight,
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: 10,
+                  sigmaY: 10,
                 ),
-                /********************************************
-               * Using MediaQuery
-               * Which will make Responsive Deisgn 
-               * According to Screen
-               * s.height (height of screen 100)
-               * 100 * 0.6 = 60
-               * this will ocupy 60 height according of every screen
-              **********************************************/
-                height: s.height * 0.6,
-                width: s.width,
-                child: Center(
-                  child: Form(
-                    key: formKey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          'SIGNUP FORM',
-                          style: GoogleFonts.lateef(
-                            textStyle: TextStyle(
-                              fontSize: 35,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: TextFormField(
-                            controller: nameC,
-                            validator: (v) {
-                              if (nameC.text.length < 3) {
-                                return 'Name must be greater than 3';
-                              } else {
-                                return null;
-                              }
-                            },
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              prefixIcon: Icon(
-                                Icons.person,
-                                color: Colors.black,
-                              ),
-                              labelText: 'Enter Name',
-                              labelStyle: TextStyle(
-                                color: Colors.black,
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.grey.withOpacity(0.2),
+                  ),
+                  /********************************************
+                 * Using MediaQuery
+                 * Which will make Responsive Deisgn 
+                 * According to Screen
+                 * s.height (height of screen 100)
+                 * 100 * 0.6 = 60
+                 * this will ocupy 60 height according of every screen
+                **********************************************/
+                  height: s.height * 0.6,
+                  width: s.width,
+                  child: Center(
+                    child: Form(
+                      key: formKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            'SIGNUP FORM',
+                            style: GoogleFonts.lateef(
+                              textStyle: TextStyle(
+                                fontSize: 35,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: TextFormField(
-                            controller: emailC,
-                            validator: (v) {
-                              if (!emailC.text.contains("@gmail.com")) {
-                                return 'Email must contain @gmail.com';
-                              } else {
-                                return null;
-                              }
-                            },
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              prefixIcon: Icon(
-                                Icons.email,
-                                color: Colors.black,
-                              ),
-                              labelText: 'Enter Email',
-                              labelStyle: TextStyle(
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: TextFormField(
-                            controller: passC,
-                            validator: (v) {
-                              if (passC.text.length < 7) {
-                                return 'Name must be greater than 7';
-                              } else {
-                                return null;
-                              }
-                            },
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              prefixIcon: Icon(
-                                Icons.lock,
-                                color: Colors.black,
-                              ),
-                              labelText: 'Enter Password',
-                              labelStyle: TextStyle(
-                                color: Colors.black,
-                              ),
-                              suffixIcon: Icon(
-                                Icons.visibility,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: MaterialButton(
-                            shape: StadiumBorder(),
-                            height: 65,
-                            minWidth: s.width,
-                            color: Colors.blue,
-                            child: Text(
-                              'SIGNUP',
-                              style: GoogleFonts.lateef(
-                                textStyle: TextStyle(
-                                  fontSize: 25.5,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              controller: nameC,
+                              validator: (v) {
+                                if (nameC.text.length < 3) {
+                                  return 'Name must be greater than 3';
+                                } else {
+                                  return null;
+                                }
+                              },
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.person,
+                                  color: Colors.black,
+                                ),
+                                labelText: 'Enter Name',
+                                labelStyle: TextStyle(
+                                  color: Colors.black,
                                 ),
                               ),
                             ),
-                            onPressed: () {
-                              saveForm(context);
-                            },
                           ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Center(
-                              child: Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Already have account?",
-                                  style: GoogleFonts.lateef(
-                                    textStyle: TextStyle(
-                                      fontSize: 20.5,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              controller: emailC,
+                              validator: (v) {
+                                if (!emailC.text.contains("@gmail.com")) {
+                                  return 'Email must contain @gmail.com';
+                                } else {
+                                  return null;
+                                }
+                              },
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.email,
+                                  color: Colors.black,
+                                ),
+                                labelText: 'Enter Email',
+                                labelStyle: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              controller: passC,
+                              validator: (v) {
+                                if (passC.text.length < 7) {
+                                  return 'Name must be greater than 7';
+                                } else {
+                                  return null;
+                                }
+                              },
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.lock,
+                                  color: Colors.black,
+                                ),
+                                labelText: 'Enter Password',
+                                labelStyle: TextStyle(
+                                  color: Colors.black,
+                                ),
+                                suffixIcon: Icon(
+                                  Icons.visibility,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: MaterialButton(
+                              shape: StadiumBorder(),
+                              height: 65,
+                              minWidth: s.width,
+                              color: Colors.blue,
+                              child: Text(
+                                'SIGNUP',
+                                style: GoogleFonts.lateef(
+                                  textStyle: TextStyle(
+                                    fontSize: 25.5,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              onPressed: () {
+                                saveForm(context);
+                              },
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Center(
+                                child: Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "Already have account?",
+                                    style: GoogleFonts.lateef(
+                                      textStyle: TextStyle(
+                                        fontSize: 20.5,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Center(
-                              child: TextButton(
-                                onPressed: () {
-                                  print('LOGIN NOW!');
-                                  Navigator.pushNamed(context, LogInScreen.id);
-                                },
-                                child: Text(
-                                  'LOGIN NOW!',
-                                  style: GoogleFonts.lateef(
-                                    textStyle: TextStyle(
-                                      fontSize: 20.5,
-                                      fontWeight: FontWeight.bold,
+                              Center(
+                                child: TextButton(
+                                  onPressed: () {
+                                    print('LOGIN NOW!');
+                                    Navigator.pushNamed(
+                                        context, LogInScreen.id);
+                                  },
+                                  child: Text(
+                                    'LOGIN NOW!',
+                                    style: GoogleFonts.lateef(
+                                      textStyle: TextStyle(
+                                        fontSize: 20.5,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

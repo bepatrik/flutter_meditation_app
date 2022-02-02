@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
               children: [
                 Center(
                   child: Text(
-                    'Work on this page is pending',
+                    'Welcome to Meditation App',
                     style: TextStyle(
                       fontSize: 25.5,
                       fontWeight: FontWeight.bold,
