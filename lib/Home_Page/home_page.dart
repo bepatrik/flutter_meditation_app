@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Credentials_Pages/login_page.dart';
 import 'package:flutter_meditation_app/Music_Player/UI_Model/ui_model.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class HomePage extends StatefulWidget {
   ///final id
@@ -19,11 +20,21 @@ class _HomePageState extends State<HomePage> {
     ///final size
     final Size s = MediaQuery.of(context).size;
 
-    ///LogOut Method
-    _logout() async {
+/*********************************************
+ * Login With Auth Method
+**********************************************/
+    void _logout() async {
       FirebaseAuth auth = FirebaseAuth.instance;
       await auth.signOut();
       Navigator.pushReplacementNamed(context, LogInScreen.id);
+    }
+
+/*********************************************
+ * LogOut With Google Method
+**********************************************/
+    void _logOutGoogle() async {
+      GoogleSignIn gsn = GoogleSignIn();
+      await gsn.signOut();
     }
 
     ///Scaffold
@@ -38,6 +49,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   print('LogOut');
                   _logout();
+                  _logOutGoogle();
                 },
                 child: Text('LogOut'),
               ),
