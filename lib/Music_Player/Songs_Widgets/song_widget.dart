@@ -1,7 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Music_Player/Songs_Model/song_model.dart';
-import 'package:flutter_meditation_app/Music_Player/UI_Model/ui_model.dart';
 
 class SongWidget extends StatefulWidget {
   ///Getting data from SONG INFO
@@ -76,6 +75,7 @@ class _SongWidgetState extends State<SongWidget> {
   @override
   Widget build(BuildContext context) {
     ///Final size
+    // ignore: unused_local_variable
     final Size s = MediaQuery.of(context).size;
 
     return Column(
