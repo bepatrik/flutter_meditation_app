@@ -1,10 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_meditation_app/Credentials_Pages/login_page.dart';
+import 'package:flutter_meditation_app/Music_Player/Songs_Widgets/audio_screen.dart';
 import 'package:flutter_meditation_app/Music_Player/UI_Model/ui_model.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class HomePage extends StatefulWidget {
   ///final id
@@ -20,23 +18,6 @@ class _HomePageState extends State<HomePage> {
     ///final size
     final Size s = MediaQuery.of(context).size;
 
-/*********************************************
- * Login With Auth Method
-**********************************************/
-    void _logout() async {
-      FirebaseAuth auth = FirebaseAuth.instance;
-      await auth.signOut();
-      Navigator.pushReplacementNamed(context, LogInScreen.id);
-    }
-
-/*********************************************
- * LogOut With Google Method
-**********************************************/
-    void _logOutGoogle() async {
-      GoogleSignIn gsn = GoogleSignIn();
-      await gsn.signOut();
-    }
-
     ///Scaffold
     return Scaffold(
       appBar: AppBar(
@@ -48,8 +29,6 @@ class _HomePageState extends State<HomePage> {
               PopupMenuItem(
                 onTap: () {
                   print('LogOut');
-                  _logout();
-                  _logOutGoogle();
                 },
                 child: Text('LogOut'),
               ),
@@ -110,34 +89,37 @@ class _HomePageState extends State<HomePage> {
               ),
 
               ///Text Categories & See All
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Padding(
-                    padding: EdgeInsets.only(left: 15, top: 10),
-                    child: Center(
-                      child: Text(
-                        'Categories',
-                        style: GoogleFonts.lateef(
-                          textStyle: TextStyle(
-                            fontSize: 35.0,
-                            fontWeight: FontWeight.bold,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                      padding: EdgeInsets.only(left: 15, top: 10),
+                      child: Center(
+                        child: Text(
+                          'Categories',
+                          style: GoogleFonts.lateef(
+                            textStyle: TextStyle(
+                              fontSize: 35.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
-                      ),
-                    )),
-                Padding(
-                  padding: EdgeInsets.only(right: 15, top: 10),
-                  child: Center(
-                    child: Text(
-                      'See all',
-                      style: GoogleFonts.lateef(
-                        textStyle: TextStyle(
-                          fontSize: 20.0,
+                      )),
+                  Padding(
+                    padding: EdgeInsets.only(right: 15, top: 10),
+                    child: Center(
+                      child: Text(
+                        'See all',
+                        style: GoogleFonts.lateef(
+                          textStyle: TextStyle(
+                            fontSize: 20.0,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ]),
+                ],
+              ),
 
               ///Music Categories
               Column(
@@ -151,6 +133,10 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             print(
                               uimodelclass[i].txt,
+                            );
+                            Navigator.pushNamed(
+                              context,
+                              AudioPlayerScreen.id,
                             );
                           },
                           child: Padding(
@@ -208,4 +194,58 @@ class _HomePageState extends State<HomePage> {
           (e) => e.categoryName == widget.categoryFile,
         )
         .toList();
+////////////////////////////////////////////////////////
+  ///List.Generate()
+  Column(
+                children: [
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(
+                        uimodelclass.length,
+                        (i) => InkWell(
+                          onTap: () {
+                            print(
+                              uimodelclass[i].txt,
+                            );
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 15, top: 10),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25),
+                                image: DecorationImage(
+                                  image: CachedNetworkImageProvider(
+                                    uimodelclass[i].imgLink,
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              height: 250,
+                              width: 250,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      uimodelclass[i].txt,
+                                      style: GoogleFonts.lateef(
+                                        textStyle: TextStyle(
+                                          fontSize: 35.0,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
 **********************************************/

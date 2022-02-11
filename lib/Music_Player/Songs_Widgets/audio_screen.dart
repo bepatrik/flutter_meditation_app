@@ -131,7 +131,7 @@ class AudioPlayerScreen extends StatelessWidget {
       children: [
         SongWidget(
           songList: songs,
-        )
+        ),
       ],
     );
   }

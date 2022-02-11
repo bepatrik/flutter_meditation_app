@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Music_Player/Songs_Model/song_model.dart';
+import 'package:flutter_meditation_app/Music_Player/UI_Model/ui_model.dart';
 
 class SongWidget extends StatefulWidget {
   ///Getting data from SONG INFO
@@ -116,12 +117,12 @@ class _SongWidgetState extends State<SongWidget> {
                 height: 20,
               ),
               Text(
-                "Artist : ${widget.songList[songIndex].artist}",
+                "${widget.songList[songIndex].artist}",
                 style: TextStyle(
                   fontSize: 15,
                   color: Colors.grey.shade800,
                 ),
-              )
+              ),
             ],
           ),
         ),
