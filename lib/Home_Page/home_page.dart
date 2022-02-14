@@ -3,15 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Music_Player/UI_Model/ui_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   ///final id
-  static final id = '/HomePage';
+  static final id = '/HomeScreen';
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeScreenState extends State<HomeScreen> {
+  ///For bottom navigation bar
+  int activeTab = 0;
+
   @override
   Widget build(BuildContext context) {
     ///final size
@@ -23,19 +26,19 @@ class _HomePageState extends State<HomePage> {
         title: Text('Home Screen'),
         centerTitle: true,
         actions: [
-          PopupMenuButton(
-            itemBuilder: (_) => [
+          PopupMenuButton(itemBuilder: (_) {
+            return [
               PopupMenuItem(
                 onTap: () {
                   print('LogOut');
                 },
                 child: Text('LogOut'),
               ),
-            ],
-          ),
+            ];
+          }),
         ],
       ),
-      drawer: Drawer(),
+      bottomNavigationBar: getBottomNavigationBar(),
       body: Container(
         height: s.height,
         width: s.width,
@@ -176,6 +179,36 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget getBottomNavigationBar() {
+    List items = [
+      Icons.settings,
+      Icons.home,
+      Icons.person,
+    ];
+    return Container(
+      height: 80,
+      decoration: BoxDecoration(color: Colors.white),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20),
+        child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: List.generate(items.length, (index) {
+              return IconButton(
+                  icon: Icon(
+                    items[index],
+                    color: activeTab == index ? Colors.red : Colors.black,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      activeTab = index;
+                    });
+                  });
+            })),
       ),
     );
   }

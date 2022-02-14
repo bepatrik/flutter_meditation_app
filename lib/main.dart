@@ -17,11 +17,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       ///home
-      home: HomePage(),
+      home: HomeScreen(),
 
       ///routes
       routes: {
-        HomePage.id: (context) => HomePage(),
+        HomeScreen.id: (context) => HomeScreen(),
         AudioPlayerScreen.id: (context) => AudioPlayerScreen(),
         // ResetPassword.id: (context) => ResetPassword(),
         // HomePage.id:(context)=> HomePage(),
