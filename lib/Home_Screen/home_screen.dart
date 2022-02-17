@@ -1,9 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_meditation_app/Constants/constants.dart';
+import 'package:flutter_meditation_app/Credentials_Screens/log_in.dart';
 import 'package:flutter_meditation_app/Music_Player/Songs_Model/song_model.dart';
 import 'package:flutter_meditation_app/Music_Player/Songs_Widgets/audio_screen.dart';
 import 'package:flutter_meditation_app/Music_Player/UI_Model/ui_model.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class HomeScreen extends StatefulWidget {
   ///final id
@@ -16,6 +21,32 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   ///For bottom navigation bar
   int activeTab = 0;
+
+  ///to logout from auth
+  void logOutAuth() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    try {
+      await auth.signOut();
+      await Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) {
+        return LogInScreen();
+      }));
+    } catch (e) {
+      toastmsg(e.toString());
+    }
+  }
+
+  ///to Auth from auth
+  void logOutGoogle() async {
+    GoogleSignIn gsn = GoogleSignIn();
+    try {
+      await gsn.signOut();
+      await Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) {
+        return LogInScreen();
+      }));
+    } catch (e) {
+      toastmsg(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +64,8 @@ class _HomeScreenState extends State<HomeScreen> {
               PopupMenuItem(
                 onTap: () {
                   print('LogOut');
+                  logOutAuth();
+                  logOutGoogle();
                 },
                 child: Text('LogOut'),
               ),
