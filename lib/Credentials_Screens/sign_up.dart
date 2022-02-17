@@ -58,161 +58,163 @@ class SignUpScreen extends StatelessWidget {
     ///size
     final Size s = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
-        height: s.height,
-        width: s.width,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: CachedNetworkImageProvider(bgSingUpImgPage),
-            fit: BoxFit.fill,
+      body: SingleChildScrollView(
+        child: Container(
+          height: s.height,
+          width: s.width,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: CachedNetworkImageProvider(bgSingUpImgPage),
+              fit: BoxFit.fill,
+            ),
           ),
-        ),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(
-            sigmaX: 10,
-            sigmaY: 10,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Form(
-                key: globalKey,
-                child: Container(
-                  height: s.height * 0.70,
-                  width: s.width,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.1),
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'SIGNUP FORM',
-                        style: GoogleFonts.lateef(
-                          textStyle: TextStyle(
-                            fontSize: 30.5,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          controller: nameC,
-                          validator: (v) {
-                            try {
-                              if (nameC.text.length < 3) {
-                                return 'Name should be greater than 3 words';
-                              } else {
-                                return null;
-                              }
-                            } catch (e) {
-                              return toastmsg(e.toString());
-                            }
-                          },
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(
+              sigmaX: 10,
+              sigmaY: 10,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Form(
+                  key: globalKey,
+                  child: Container(
+                    height: s.height * 0.70,
+                    width: s.width,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(0.1),
+                      border: Border.all(),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          'SIGNUP FORM',
+                          style: GoogleFonts.lateef(
+                            textStyle: TextStyle(
+                              fontSize: 30.5,
+                              fontWeight: FontWeight.bold,
                             ),
-                            prefixIcon: Icon(Icons.person),
-                            hintText: 'Enter Name',
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          controller: emailC,
-                          validator: (v) {
-                            try {
-                              if (!emailC.text.contains('@gmail.com')) {
-                                return 'Enter valid email';
-                              } else if (emailC.text
-                                  .contains('@gmail.com'.toUpperCase())) {
-                                return 'Please Enter valid email';
-                              } else {
-                                return null;
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: TextFormField(
+                            controller: nameC,
+                            validator: (v) {
+                              try {
+                                if (nameC.text.length < 3) {
+                                  return 'Name should be greater than 3 words';
+                                } else {
+                                  return null;
+                                }
+                              } catch (e) {
+                                return toastmsg(e.toString());
                               }
-                            } catch (e) {
-                              return toastmsg(e.toString());
-                            }
-                          },
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
+                            },
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              prefixIcon: Icon(Icons.person),
+                              hintText: 'Enter Name',
                             ),
-                            prefixIcon: Icon(Icons.email),
-                            hintText: 'Enter e-mail',
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          controller: passC,
-                          validator: (v) {
-                            try {
-                              if (passC.text.length < 7) {
-                                return 'Password should be greater than 3 words';
-                              } else {
-                                return null;
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: TextFormField(
+                            controller: emailC,
+                            validator: (v) {
+                              try {
+                                if (!emailC.text.contains('@gmail.com')) {
+                                  return 'Enter valid email';
+                                } else if (emailC.text
+                                    .contains('@gmail.com'.toUpperCase())) {
+                                  return 'Please Enter valid email';
+                                } else {
+                                  return null;
+                                }
+                              } catch (e) {
+                                return toastmsg(e.toString());
                               }
-                            } catch (e) {
-                              return toastmsg(e.toString());
-                            }
-                          },
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
+                            },
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              prefixIcon: Icon(Icons.email),
+                              hintText: 'Enter e-mail',
                             ),
-                            prefixIcon: Icon(Icons.lock),
-                            hintText: 'Enter Password',
-                            suffixIcon: Icon(Icons.visibility),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: MaterialButton(
-                          shape: StadiumBorder(),
-                          height: 55,
-                          minWidth: s.width,
-                          color: Colors.blue,
-                          onPressed: () {
-                            saveFormUser(context);
-                          },
-                          child: Text(
-                            'SIGNUP',
-                            style: GoogleFonts.lateef(
-                              textStyle: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30.5,
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: TextFormField(
+                            controller: passC,
+                            validator: (v) {
+                              try {
+                                if (passC.text.length < 7) {
+                                  return 'Password should be greater than 3 words';
+                                } else {
+                                  return null;
+                                }
+                              } catch (e) {
+                                return toastmsg(e.toString());
+                              }
+                            },
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              prefixIcon: Icon(Icons.lock),
+                              hintText: 'Enter Password',
+                              suffixIcon: Icon(Icons.visibility),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: MaterialButton(
+                            shape: StadiumBorder(),
+                            height: 55,
+                            minWidth: s.width,
+                            color: Colors.blue,
+                            onPressed: () {
+                              saveFormUser(context);
+                            },
+                            child: Text(
+                              'SIGNUP',
+                              style: GoogleFonts.lateef(
+                                textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30.5,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text("Already have account?"),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text('LOGIN NOW'),
-                          ),
-                        ],
-                      ),
-                    ],
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text("Already have account?"),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text('LOGIN NOW'),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

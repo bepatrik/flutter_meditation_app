@@ -57,176 +57,179 @@ class LogInScreen extends StatelessWidget {
     ///size
     final Size s = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
-        height: s.height,
-        width: s.width,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: CachedNetworkImageProvider(bgLogInImgPage),
-            fit: BoxFit.fill,
+      body: SingleChildScrollView(
+        child: Container(
+          height: s.height,
+          width: s.width,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: CachedNetworkImageProvider(bgLogInImgPage),
+              fit: BoxFit.fill,
+            ),
           ),
-        ),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(
-            sigmaX: 10,
-            sigmaY: 10,
-          ),
-          child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Form(
-                  key: globalKey,
-                  child: Container(
-                    height: s.height * 0.70,
-                    width: s.width,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.1),
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          'LOGIN FORM',
-                          style: GoogleFonts.lateef(
-                            textStyle: TextStyle(
-                              fontSize: 30.5,
-                              fontWeight: FontWeight.bold,
+          child: BackdropFilter(
+            filter: ImageFilter.blur(
+              sigmaX: 10,
+              sigmaY: 10,
+            ),
+            child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Form(
+                    key: globalKey,
+                    child: Container(
+                      height: s.height * 0.70,
+                      width: s.width,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.withOpacity(0.1),
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            'LOGIN FORM',
+                            style: GoogleFonts.lateef(
+                              textStyle: TextStyle(
+                                fontSize: 30.5,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: TextFormField(
-                            controller: emailC,
-                            validator: (v) {
-                              try {
-                                if (!emailC.text.contains('@gmail.com')) {
-                                  return 'Enter valid email';
-                                } else if (emailC.text
-                                    .contains('@gmail.com'.toUpperCase())) {
-                                  return 'Please Enter valid email';
-                                } else {
-                                  return null;
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              controller: emailC,
+                              validator: (v) {
+                                try {
+                                  if (!emailC.text.contains('@gmail.com')) {
+                                    return 'Enter valid email';
+                                  } else if (emailC.text
+                                      .contains('@gmail.com'.toUpperCase())) {
+                                    return 'Please Enter valid email';
+                                  } else {
+                                    return null;
+                                  }
+                                } catch (e) {
+                                  return toastmsg(e.toString());
                                 }
-                              } catch (e) {
-                                return toastmsg(e.toString());
-                              }
-                            },
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
+                              },
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                prefixIcon: Icon(Icons.email),
+                                hintText: 'Enter e-mail',
                               ),
-                              prefixIcon: Icon(Icons.email),
-                              hintText: 'Enter e-mail',
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: TextFormField(
-                            controller: passC,
-                            validator: (v) {
-                              try {
-                                if (passC.text.length < 7) {
-                                  return 'Password should be greater than 3 words';
-                                } else {
-                                  return null;
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              controller: passC,
+                              validator: (v) {
+                                try {
+                                  if (passC.text.length < 7) {
+                                    return 'Password should be greater than 3 words';
+                                  } else {
+                                    return null;
+                                  }
+                                } catch (e) {
+                                  return toastmsg(e.toString());
                                 }
-                              } catch (e) {
-                                return toastmsg(e.toString());
-                              }
-                            },
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              prefixIcon: Icon(Icons.lock),
-                              hintText: 'Enter Password',
-                              suffixIcon: Icon(Icons.visibility),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: MaterialButton(
-                            shape: StadiumBorder(),
-                            height: 55,
-                            minWidth: s.width,
-                            color: Colors.blue,
-                            onPressed: () {
-                              saveFormUser(context);
-                            },
-                            child: Text(
-                              'LOGIN',
-                              style: GoogleFonts.lateef(
-                                textStyle: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 30.5,
+                              },
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(50),
                                 ),
+                                prefixIcon: Icon(Icons.lock),
+                                hintText: 'Enter Password',
+                                suffixIcon: Icon(Icons.visibility),
                               ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: MaterialButton(
-                            shape: StadiumBorder(),
-                            height: 55,
-                            minWidth: s.width,
-                            color: Colors.blue,
-                            onPressed: () {
-                              signInGoogle(context);
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Image.asset(
-                                  'images/google.png',
-                                  height: 40,
-                                ),
-                                Text(
-                                  'Sign in with Google',
-                                  style: GoogleFonts.lateef(
-                                    textStyle: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 25.5,
-                                    ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: MaterialButton(
+                              shape: StadiumBorder(),
+                              height: 55,
+                              minWidth: s.width,
+                              color: Colors.blue,
+                              onPressed: () {
+                                saveFormUser(context);
+                              },
+                              child: Text(
+                                'LOGIN',
+                                style: GoogleFonts.lateef(
+                                  textStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 30.5,
                                   ),
                                 ),
-                              ],
+                              ),
                             ),
                           ),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(
-                                context, ForgetPassWordScreen.id);
-                          },
-                          child: Text('Forget Password?'),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text("Don't have account?"),
-                            TextButton(
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: MaterialButton(
+                              shape: StadiumBorder(),
+                              height: 55,
+                              minWidth: s.width,
+                              color: Colors.blue,
                               onPressed: () {
-                                Navigator.pushNamed(context, SignUpScreen.id);
+                                signInGoogle(context);
                               },
-                              child: Text('REGISTER'),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Image.asset(
+                                    'images/google.png',
+                                    height: 40,
+                                  ),
+                                  Text(
+                                    'Sign in with Google',
+                                    style: GoogleFonts.lateef(
+                                      textStyle: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 25.5,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ],
-                        ),
-                      ],
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                  context, ForgetPassWordScreen.id);
+                            },
+                            child: Text('Forget Password?'),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text("Don't have account?"),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pushNamed(context, SignUpScreen.id);
+                                },
+                                child: Text('REGISTER'),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
