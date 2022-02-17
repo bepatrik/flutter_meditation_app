@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       ///home
-      home: HomeScreen(),
+      home: LogInScreen(),
 
       ///routes
       routes: {

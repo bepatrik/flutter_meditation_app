@@ -78,7 +78,7 @@ class SignUpScreen extends StatelessWidget {
               Form(
                 key: globalKey,
                 child: Container(
-                  height: s.height * 0.60,
+                  height: s.height * 0.70,
                   width: s.width,
                   decoration: BoxDecoration(
                     color: Colors.grey.withOpacity(0.1),

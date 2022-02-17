@@ -180,13 +180,24 @@ class LogInScreen extends StatelessWidget {
                             onPressed: () {
                               signInGoogle(context);
                             },
-                            child: Text(
-                              'SIGN IN WITH GOOGLE',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                              ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Image.asset(
+                                  'images/google.png',
+                                  height: 40,
+                                ),
+                                Text(
+                                  'Sign in with Google',
+                                  style: GoogleFonts.lateef(
+                                    textStyle: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 25.5,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
