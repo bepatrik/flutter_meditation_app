@@ -1,4 +1,5 @@
 // import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 /*********************************************
@@ -34,7 +35,7 @@ toastmsg(String msg) {
  * Making User's Collection
  * Globally Accessible
 **********************************************/
-// DatabaseReference userRef =
-//     FirebaseDatabase.instance.ref().child("User's Info");
+DatabaseReference userRef =
+    FirebaseDatabase.instance.ref().child("User's Info");
 
-// FirebaseDatabase database = FirebaseDatabase.instance;
+FirebaseDatabase database = FirebaseDatabase.instance;

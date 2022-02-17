@@ -1,10 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/log_in.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/sign_up.dart';
 import 'package:flutter_meditation_app/Home_Screen/home_screen.dart';
 import 'package:flutter_meditation_app/Music_Player/Songs_Widgets/audio_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
