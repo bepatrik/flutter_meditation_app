@@ -72,7 +72,7 @@ class SignUpScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(50),
                             ),
                             prefixIcon: Icon(Icons.email),
-                            hintText: 'Enter E-mail',
+                            hintText: 'Enter e-mail',
                           ),
                         ),
                       ),

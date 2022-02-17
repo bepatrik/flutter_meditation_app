@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Constants/constants.dart';
@@ -62,7 +61,7 @@ class LogInScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(50),
                               ),
                               prefixIcon: Icon(Icons.email),
-                              hintText: 'Enter E-mail',
+                              hintText: 'Enter e-mail',
                             ),
                           ),
                         ),
