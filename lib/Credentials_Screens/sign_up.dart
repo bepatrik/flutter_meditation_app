@@ -186,10 +186,12 @@ class SignUpScreen extends StatelessWidget {
                           },
                           child: Text(
                             'SIGNUP',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18.0,
+                            style: GoogleFonts.lateef(
+                              textStyle: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30.5,
+                              ),
                             ),
                           ),
                         ),
