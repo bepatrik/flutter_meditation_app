@@ -21,6 +21,7 @@ class UIModelClass {
  * USED IN HOMESCREEN TO MAKE
  * CATEGORIES
 **********************************************/
+
 List<UIModelClass> uimodelclass = [
   UIModelClass(
     txt: 'Calm Music',

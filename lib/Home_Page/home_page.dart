@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_meditation_app/Music_Player/Songs_Widgets/audio_screen.dart';
 import 'package:flutter_meditation_app/Music_Player/UI_Model/ui_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -129,50 +130,53 @@ class _HomeScreenState extends State<HomeScreen> {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: List.generate(
-                        uimodelclass.length,
-                        (i) => InkWell(
-                          onTap: () {
-                            print(
-                              uimodelclass[i].txt,
-                            );
-                          },
-                          child: Padding(
-                            padding: EdgeInsets.only(left: 15, top: 10),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                image: DecorationImage(
-                                  image: CachedNetworkImageProvider(
-                                    uimodelclass[i].imgLink,
-                                  ),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              height: 250,
-                              width: 250,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Center(
-                                    child: Text(
-                                      uimodelclass[i].txt,
-                                      style: GoogleFonts.lateef(
-                                        textStyle: TextStyle(
-                                          fontSize: 35.0,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
+                        children: uimodelclass
+                            .map(
+                              (e) => InkWell(
+                                onTap: () {
+                                  print(e.txt);
+                                  Navigator.pushNamed(
+                                    context,
+                                    AudioPlayerScreen.id,
+                                  );
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 15, top: 10),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(25),
+                                      image: DecorationImage(
+                                        image: CachedNetworkImageProvider(
+                                          e.imgLink,
                                         ),
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
+                                    height: 250,
+                                    width: 250,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Center(
+                                          child: Text(
+                                            e.txt,
+                                            style: GoogleFonts.lateef(
+                                              textStyle: TextStyle(
+                                                fontSize: 35.0,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                            )
+                            .toList()),
                   ),
                 ],
               )
@@ -187,28 +191,36 @@ class _HomeScreenState extends State<HomeScreen> {
     List items = [
       Icons.settings,
       Icons.home,
+      Icons.search,
       Icons.person,
     ];
     return Container(
-      height: 80,
+      height: 60,
       decoration: BoxDecoration(color: Colors.white),
       child: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: List.generate(items.length, (index) {
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: List.generate(
+            items.length,
+            (index) {
               return IconButton(
-                  icon: Icon(
-                    items[index],
-                    color: activeTab == index ? Colors.red : Colors.black,
-                  ),
-                  onPressed: () {
-                    setState(() {
+                icon: Icon(
+                  items[index],
+                  color: activeTab == index ? Colors.red : Colors.black,
+                ),
+                onPressed: () {
+                  setState(
+                    () {
                       activeTab = index;
-                    });
-                  });
-            })),
+                    },
+                  );
+                },
+              );
+            },
+          ),
+        ),
       ),
     );
   }
@@ -276,4 +288,59 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               )
+/////////////////////////////////////////////////////////////////////
+//////From Map to List()
+    Column(
+                children: [
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                        children: uimodelclass
+                            .map(
+                              (e) => InkWell(
+                                onTap: () {
+                                  print(
+                                    e.txt,
+                                  );
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 15, top: 10),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(25),
+                                      image: DecorationImage(
+                                        image: CachedNetworkImageProvider(
+                                          e.imgLink,
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    height: 250,
+                                    width: 250,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Center(
+                                          child: Text(
+                                            e.txt,
+                                            style: GoogleFonts.lateef(
+                                              textStyle: TextStyle(
+                                                fontSize: 35.0,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                            .toList()),
+                  ),
+                ],
+              )          
 **********************************************/

@@ -108,6 +108,7 @@ class _SongWidgetState extends State<SongWidget> {
             children: [
               Text(
                 "${widget.songList[songIndex].category}",
+                // "${txt}",
                 style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,
