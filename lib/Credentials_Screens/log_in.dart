@@ -17,7 +17,6 @@ class LogInScreen extends StatelessWidget {
         height: s.height,
         width: s.width,
         decoration: BoxDecoration(
-          color: Colors.white,
           image: DecorationImage(
             image: CachedNetworkImageProvider(bgLogInImgPage),
             fit: BoxFit.fill,
@@ -37,7 +36,7 @@ class LogInScreen extends StatelessWidget {
                     height: s.height * 0.60,
                     width: s.width,
                     decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.2),
+                      color: Colors.grey.withOpacity(0.1),
                       border: Border.all(),
                       borderRadius: BorderRadius.circular(20),
                     ),
