@@ -45,4 +45,9 @@ List<UIModelClass> uimodelclass = [
     txt: 'Romantic Music',
     imgLink: 'https://cdn.wallpapersafari.com/32/80/eqELlz.jpg',
   ),
+  UIModelClass(
+    txt: 'Horny Sounds',
+    imgLink:
+        'https://w0.peakpx.com/wallpaper/682/729/HD-wallpaper-love-kiss-couple-couple-kiss-design-graphic-love-love-couple-love-themes.jpg',
+  ),
 ];
