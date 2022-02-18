@@ -6,10 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Constants/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ForgetPassWordScreen extends StatelessWidget {
+class ForgetPassWordScreen extends StatefulWidget {
 //final id
   static final id = '/ForgetPassWordScreen';
 
+  @override
+  State<ForgetPassWordScreen> createState() => _ForgetPassWordScreenState();
+}
+
+class _ForgetPassWordScreenState extends State<ForgetPassWordScreen> {
   ///auth
   FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -40,6 +45,14 @@ class ForgetPassWordScreen extends StatelessWidget {
         );
       },
     );
+  }
+
+  ///disposing
+  @override
+  void dispose() {
+    emailC.clear();
+    emailC.dispose();
+    super.dispose();
   }
 
   @override

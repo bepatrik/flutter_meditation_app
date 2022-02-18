@@ -7,13 +7,20 @@ import 'package:flutter_meditation_app/Constants/constants.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/log_in.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   ///final id
   static final id = '/SignUpScreen';
 
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   ///Controllers
   TextEditingController nameC = TextEditingController();
+
   TextEditingController emailC = TextEditingController();
+
   TextEditingController passC = TextEditingController();
 
   ///global key
@@ -51,6 +58,18 @@ class SignUpScreen extends StatelessWidget {
     } catch (e) {
       await toastmsg(e.toString());
     }
+  }
+
+  ///disposing
+  @override
+  void dispose() {
+    emailC.clear();
+    nameC.clear();
+    passC.clear();
+    emailC.dispose();
+    nameC.dispose();
+    passC.dispose();
+    super.dispose();
   }
 
   @override
