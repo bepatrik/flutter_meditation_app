@@ -18,25 +18,28 @@ class ForgetPassWordScreen extends StatelessWidget {
 
   ///forget password method
   forgetPass(BuildContext context) {
-    auth.sendPasswordResetEmail(email: emailC.text.trim());
+    auth.sendPasswordResetEmail(
+      email: emailC.text.trim(),
+    );
     showDialog(
-        context: context,
-        builder: (_) {
-          return AlertDialog(
-            title: Text('Reset Password Request'),
-            content: Text(
-              'Your request to reset the Password has been sent to your Gmail,go and check Gmail',
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          title: Text('Reset Email/Password Request'),
+          content: Text(
+            'Your request to reset the Password has been sent to your mail,go and check mail',
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Okay!'),
             ),
-            actions: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text('Okay!'),
-              ),
-            ],
-          );
-        });
+          ],
+        );
+      },
+    );
   }
 
   @override
