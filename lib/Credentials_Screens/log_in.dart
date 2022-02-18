@@ -7,7 +7,6 @@ import 'package:flutter_meditation_app/Credentials_Screens/Forget_Password/forge
 import 'package:flutter_meditation_app/Credentials_Screens/sign_up.dart';
 import 'package:flutter_meditation_app/Home_Screen/home_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class LogInScreen extends StatelessWidget {
   ///final id
@@ -173,38 +172,6 @@ class LogInScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: MaterialButton(
-                              shape: StadiumBorder(),
-                              height: 55,
-                              minWidth: s.width,
-                              color: Colors.blue,
-                              onPressed: () {
-                                signInGoogle(context);
-                              },
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Image.asset(
-                                    'images/google.png',
-                                    height: 40,
-                                  ),
-                                  Text(
-                                    'Sign in with Google',
-                                    style: GoogleFonts.lateef(
-                                      textStyle: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 25.5,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
                           TextButton(
                             onPressed: () {
                               Navigator.pushNamed(
@@ -235,22 +202,5 @@ class LogInScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void signInGoogle(BuildContext context) async {
-    GoogleSignIn gsn = GoogleSignIn();
-    try {
-      await gsn.signIn();
-      await Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (_) {
-            return HomeScreen();
-          },
-        ),
-      );
-    } catch (e) {
-      toastmsg(e.toString());
-    }
   }
 }

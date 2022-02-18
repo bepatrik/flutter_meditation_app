@@ -6,7 +6,6 @@ import 'package:flutter_meditation_app/Credentials_Screens/log_in.dart';
 import 'package:flutter_meditation_app/Music_Player/Songs_Widgets/audio_screen.dart';
 import 'package:flutter_meditation_app/Music_Player/UI_Model/ui_model.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class HomeScreen extends StatefulWidget {
   ///final id
@@ -33,19 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  ///to Auth from auth
-  void logOutGoogle() async {
-    GoogleSignIn gsn = GoogleSignIn();
-    try {
-      await gsn.signOut();
-      await Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) {
-        return LogInScreen();
-      }));
-    } catch (e) {
-      toastmsg(e.toString());
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     ///final size
@@ -63,7 +49,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   print('LogOut');
                   logOutAuth();
-                  logOutGoogle();
                 },
                 child: Text('LogOut'),
               ),
