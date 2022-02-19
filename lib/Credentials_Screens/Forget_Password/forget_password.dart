@@ -30,9 +30,19 @@ class _ForgetPassWordScreenState extends State<ForgetPassWordScreen> {
       context: context,
       builder: (_) {
         return AlertDialog(
-          title: Text('Reset Email/Password Request'),
+          title: Text(
+            'Reset Email/Password Request',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
           content: Text(
-            'Your request to reset the Password has been sent to your mail,go and check mail',
+            'Your request has been sent to your mail',
+            style: TextStyle(
+              fontSize: 20,
+            ),
           ),
           actions: [
             ElevatedButton(

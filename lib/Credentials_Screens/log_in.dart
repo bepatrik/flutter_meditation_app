@@ -38,14 +38,8 @@ class _LogInScreenState extends State<LogInScreen> {
         );
         var user = auth.currentUser.uid;
         if (user != null) {
-          await Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (_) {
-                return HomeScreen();
-              },
-            ),
-          ).catchError(
+          await Navigator.pushReplacementNamed(context, HomeScreen.id)
+              .catchError(
             (onError) {
               toastmsg(onError.toString());
             },
