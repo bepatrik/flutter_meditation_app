@@ -55,7 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
           }),
         ],
       ),
-      bottomNavigationBar: getBottomNavigationBar(),
       body: Container(
         height: s.height,
         width: s.width,
@@ -185,44 +184,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget getBottomNavigationBar() {
-    List icons = [
-      Icons.settings,
-      Icons.home,
-      Icons.search,
-      Icons.person,
-    ];
-    return Container(
-      height: 60,
-      decoration: BoxDecoration(color: Colors.white),
-      child: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: List.generate(
-            icons.length,
-            (index) {
-              return IconButton(
-                icon: Icon(
-                  icons[index],
-                  color: activeTab == index ? Colors.red : Colors.black,
-                ),
-                onPressed: () {
-                  setState(
-                    () {
-                      activeTab = index;
-                    },
-                  );
-                },
-              );
-            },
           ),
         ),
       ),
