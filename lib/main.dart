@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
       ///DebugShowCheckedModeBanner
       debugShowCheckedModeBanner: false,
 
-      ///home
+      ///UserLogInActivity
+      ///Notifies about changes to the user's sign-in state (such as sign-in or sign-out).
       home: UserLogInActivity(),
 
       ///routes
@@ -34,6 +35,13 @@ class MyApp extends StatelessWidget {
         SignUpScreen.id: (context) => SignUpScreen(),
         ForgetPassWordScreen.id: (context) => ForgetPassWordScreen(),
         UserLogInActivity.id: (context) => UserLogInActivity(),
+        // HomePage.id:(context)=> HomePage(),
+        // HomePage.id:(context)=> HomePage(),
+        // HomePage.id:(context)=> HomePage(),
+        // HomePage.id:(context)=> HomePage(),
+        // HomePage.id:(context)=> HomePage(),
+        // HomePage.id:(context)=> HomePage(),
+        // HomePage.id:(context)=> HomePage(),
         // HomePage.id:(context)=> HomePage(),
       },
     );
