@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Constants/constants.dart';
-import 'package:flutter_meditation_app/Credentials_Screens/log_in.dart';
+import 'package:flutter_meditation_app/Credentials_Screens/Login_SignUp_Screens/log_in.dart';
 import 'package:flutter_meditation_app/Home_Screen/home_screen.dart';
 
 // ignore: must_be_immutable

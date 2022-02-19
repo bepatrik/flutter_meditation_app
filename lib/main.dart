@@ -2,8 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/Forget_Password/forget_password.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/User_Login_Logout/user_activities.dart';
-import 'package:flutter_meditation_app/Credentials_Screens/log_in.dart';
-import 'package:flutter_meditation_app/Credentials_Screens/sign_up.dart';
+import 'package:flutter_meditation_app/Credentials_Screens/Login_SignUp_Screens/log_in.dart';
+import 'package:flutter_meditation_app/Credentials_Screens/Login_SignUp_Screens/sign_up.dart';
 import 'package:flutter_meditation_app/Home_Screen/home_screen.dart';
 import 'package:flutter_meditation_app/Music_Player/Songs_Widgets/audio_screen.dart';
 
