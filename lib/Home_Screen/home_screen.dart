@@ -1,11 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Constants/constants.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/Login_SignUp_Screens/log_in.dart';
 import 'package:flutter_meditation_app/Music_Player/UI_Model/ui_model.dart';
-import 'package:flutter_meditation_app/User_Profile_Management/profile_drawer.dart';
 import 'package:flutter_meditation_app/User_Profile_Management/profile_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,10 +18,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   ///For bottom navigation bar
   int activeTab = 0;
+  FirebaseAuth auth = FirebaseAuth.instance;
 
   ///to logout from auth
   void logOutAuth() async {
-    FirebaseAuth auth = FirebaseAuth.instance;
     try {
       await auth.signOut();
       await Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) {
@@ -60,7 +58,26 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
 
       ///Drawer
-      drawer: ProfileDrawer(),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.lightBlue),
+              child: ProfileView(),
+            ),
+            Card(
+              child: ListTile(
+                iconColor: Colors.black,
+                textColor: Colors.black,
+                leading: Icon(Icons.home),
+                title: Text('HOME'),
+                trailing: Icon(Icons.arrow_forward),
+              ),
+            ),
+          ],
+        ),
+      ),
 
       ///Body
       body: Container(

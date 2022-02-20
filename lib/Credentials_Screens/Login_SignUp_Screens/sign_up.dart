@@ -41,9 +41,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
         if (user != null) {
           await userRef.child(auth.currentUser.uid).set(
             {
-              "Name": nameC.text,
-              "Email": emailC.text,
-              "Password": passC.text,
+              "Name": nameC.text.trim(),
+              "Email": emailC.text.trim(),
+              "Password": passC.text.trim(),
             },
           ).catchError(
             (onError) {

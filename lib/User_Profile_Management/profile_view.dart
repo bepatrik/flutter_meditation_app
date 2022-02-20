@@ -15,8 +15,29 @@ class ProfileView extends StatelessWidget {
           FutureBuilder<User>(
             initialData: auth.currentUser,
             builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
-              if (snapshot.connectionState != null) {
-                return userProfileInfo(context, snapshot);
+              if (snapshot.hasData) {
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("Name : ${snapshot.data.displayName}"),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("Email : ${auth.currentUser.email}"),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                          "Created on: ${auth.currentUser.metadata.creationTime}"),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                          "Email verified : ${auth.currentUser.emailVerified}"),
+                    ),
+                  ],
+                );
               } else {
                 return loadingEffect();
               }
@@ -27,28 +48,28 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  Widget userProfileInfo(context, snapshot) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text("Name : ${auth.currentUser.displayName}"),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text("Email : ${auth.currentUser.email}"),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text("Created on : ${auth.currentUser.metadata.creationTime}"),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text("Email verified : ${auth.currentUser.emailVerified}"),
-        ),
-      ],
-    );
-  }
+// Column(
+//                   children: [
+//                     Padding(
+//                       padding: const EdgeInsets.all(8.0),
+//                       child: Text("Name : ${snapshot.data.displayName}"),
+//                     ),
+//                     Padding(
+//                       padding: const EdgeInsets.all(8.0),
+//                       child: Text("Email : ${auth.currentUser.email}"),
+//                     ),
+//                     Padding(
+//                       padding: const EdgeInsets.all(8.0),
+//                       child: Text(
+//                           "Created on: ${auth.currentUser.metadata.creationTime}"),
+//                     ),
+//                     Padding(
+//                       padding: const EdgeInsets.all(8.0),
+//                       child: Text(
+//                           "Email verified : ${auth.currentUser.emailVerified}"),
+//                     ),
+//                   ],
+//                 )
 
   Widget loadingEffect() {
     return Center(child: CircularProgressIndicator());
