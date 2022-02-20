@@ -1,5 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_meditation_app/Constants/constants.dart';
+import 'package:flutter_meditation_app/Credentials_Screens/Login_SignUp_Screens/log_in.dart';
 
 class ProfileViewScreen extends StatelessWidget {
   ///id
@@ -10,37 +13,126 @@ class ProfileViewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ///final size
+    // ignore: unused_local_variable
+    final Size s = MediaQuery.of(context).size;
     return Scaffold(
-      body: FutureBuilder<User>(
-        initialData: auth.currentUser,
-        builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
-          if (snapshot.hasData) {
-            return Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("Name : ${snapshot.data.displayName}"),
+      appBar: AppBar(
+        title: Text('User Profile'),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Container(
+                  height: 200,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: CachedNetworkImageProvider(myImgLink),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.circular(200),
+                  ),
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: IconButton(
+                      onPressed: () {
+                        print('Clicked to pick Image');
+                      },
+                      icon: Icon(
+                        Icons.camera_alt,
+                        size: 35,
+                      ),
+                    ),
+                  ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("Email : ${auth.currentUser.email}"),
+              ),
+              Container(
+                color: Colors.grey.withOpacity(0.2),
+                width: s.width,
+                child: ListTile(
+                  title: Center(child: Text("Last seen")),
+                  subtitle: Center(
+                      child:
+                          Text("${auth.currentUser.metadata.lastSignInTime}")),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                      "Created on: ${auth.currentUser.metadata.creationTime}"),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                      "Email verified : ${auth.currentUser.emailVerified}"),
-                ),
-              ],
-            );
-          } else {
-            return CircularProgressIndicator();
-          }
-        },
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  FutureBuilder<User>(
+                    initialData: auth.currentUser,
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.hasData) {
+                        return Column(
+                          children: [
+                            /*The users display name.
+                            Will be null if signing in 
+                            anonymously or via password authentication.*/
+                            Card(
+                              child: ListTile(
+                                title: Text('Name'),
+                                trailing: Text(
+                                  auth.currentUser != null
+                                      ? "${auth.currentUser.displayName}"
+                                      : Container(
+                                          height: 2.0,
+                                          width: 40.0,
+                                          child: Text('Progress Indicator'),
+                                        ),
+                                ),
+                              ),
+                            ),
+                            Card(
+                              child: ListTile(
+                                title: Text('E-mail'),
+                                trailing: Text("${auth.currentUser.email}"),
+                              ),
+                            ),
+                            Card(
+                              child: ListTile(
+                                title: Text('Created on'),
+                                trailing: Text(
+                                    "${auth.currentUser.metadata.creationTime}"),
+                              ),
+                            ),
+                            Card(
+                              child: ListTile(
+                                title: Text('Email verified'),
+                                trailing: Text(
+                                  "${auth.currentUser.emailVerified}" == true
+                                      ? "Verified"
+                                      : "Not verified",
+                                ),
+                              ),
+                            ),
+                            Card(
+                              child: ListTile(
+                                title: Text('Anonymous'),
+                                trailing: Text(
+                                  auth.currentUser.isAnonymous == true
+                                      ? "Is Anonymous"
+                                      : "Not Anonymous",
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      } else {
+                        return CircularProgressIndicator();
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -81,9 +81,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
 
-      ///Drawer
-      drawer: Drawer(),
-
       ///Body
       body: Container(
         height: s.height,

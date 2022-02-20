@@ -24,6 +24,12 @@ String splashImgBg =
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUNc9UDh-5oG3sdLbrqm1CvmVCdFv8fEWgk90wrmakvS-MToj4t5Ii0aDqgaMuenYpcc8&usqp=CAU';
 
 /*********************************************
+ * IMAGE IS FROM NETWORK
+ * FOR Profile Image
+**********************************************/
+String myImgLink =
+    'https://scontent.fkhi10-1.fna.fbcdn.net/v/t39.30808-6/271037628_114657831078331_8286816738665498079_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=174925&_nc_eui2=AeHGEp7BxOe8Be0GX9g2qCM11iBcqTOZRm7WIFypM5lGbi9ntfoaERv0l2VQfXJYIXfpOrfRcKxnNyVgaqw9hCYi&_nc_ohc=WXEn_o40PkMAX_fq_NR&tn=VsrH7Dgi8rMpqEGY&_nc_ht=scontent.fkhi10-1.fna&oh=00_AT-GTRZGiFvWtnOzEhoOWH0XjaW1BKp5Z9UpiaXD1tsYLQ&oe=6218605F';
+/*********************************************
  * Making FlutterToast
  * Globally Accessible
 **********************************************/
