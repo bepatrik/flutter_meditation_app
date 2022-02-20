@@ -40,7 +40,7 @@ class ProfileView extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text("Created on: ${auth.currentUser.metadata.creationTime}"),
+          child: Text("Created on : ${auth.currentUser.metadata.creationTime}"),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
