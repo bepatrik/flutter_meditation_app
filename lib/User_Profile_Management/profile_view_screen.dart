@@ -96,6 +96,15 @@ class ProfileViewScreen extends StatelessWidget {
                             ),
                             Card(
                               child: ListTile(
+                                title: Text('Phone Number'),
+                                trailing: Text(
+                                    auth.currentUser.phoneNumber == null
+                                        ? "No number added"
+                                        : "${auth.currentUser.phoneNumber}"),
+                              ),
+                            ),
+                            Card(
+                              child: ListTile(
                                 title: Text('Created on'),
                                 trailing: Text(
                                     "${auth.currentUser.metadata.creationTime}"),

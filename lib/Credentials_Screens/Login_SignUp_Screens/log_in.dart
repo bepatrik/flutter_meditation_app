@@ -6,6 +6,7 @@ import 'package:flutter_meditation_app/Constants/constants.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/Forget_Password/forget_password.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/Login_SignUp_Screens/sign_up.dart';
 import 'package:flutter_meditation_app/Home_Screen/home_screen.dart';
+import 'package:flutter_meditation_app/LOGIN_With_PhoneNumber/otpform.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -180,6 +181,17 @@ class _LogInScreenState extends State<LogInScreen> {
                                   ),
                                 ),
                               ),
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            color: Colors.grey.withOpacity(0.3),
+                            child: TextButton.icon(
+                              icon: Icon(Icons.phone),
+                              onPressed: () {
+                                Navigator.pushNamed(context, OTPFormScreen.id);
+                              },
+                              label: Text('Login with phone'),
                             ),
                           ),
                           TextButton(
