@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Constants/constants.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/Login_SignUp_Screens/log_in.dart';
 import 'package:flutter_meditation_app/Music_Player/UI_Model/ui_model.dart';
-import 'package:flutter_meditation_app/User_Profile_Management/profile_view.dart';
+import 'package:flutter_meditation_app/User_Profile_Management/profile_view_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -57,27 +57,32 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
 
-      ///Drawer
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Colors.lightBlue),
-              child: ProfileView(),
-            ),
-            Card(
-              child: ListTile(
-                iconColor: Colors.black,
-                textColor: Colors.black,
-                leading: Icon(Icons.home),
-                title: Text('HOME'),
-                trailing: Icon(Icons.arrow_forward),
+      bottomNavigationBar: Container(
+        child: Container(
+          height: s.height / 15,
+          width: s.width,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.home),
               ),
-            ),
-          ],
+              IconButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) {
+                    return ProfileViewScreen();
+                  }));
+                },
+                icon: Icon(Icons.person),
+              ),
+            ],
+          ),
         ),
       ),
+
+      ///Drawer
+      drawer: Drawer(),
 
       ///Body
       body: Container(
@@ -215,6 +220,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
 
 
 
