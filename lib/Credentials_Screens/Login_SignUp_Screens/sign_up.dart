@@ -200,7 +200,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 return toastmsg(e.toString());
                               }
                             },
-                            obscureText: true,
+                            obscureText: obsecure,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50),
