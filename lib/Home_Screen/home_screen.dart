@@ -174,71 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
 
               ///Music Categories
-              GridView.count(
-                shrinkWrap: true,
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                children: List.generate(
-                  uimodelclass.length,
-                  (index) => InkWell(
-                    onTap: () {
-                      print(uimodelclass[index].txt);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        image: DecorationImage(
-                          image: CachedNetworkImageProvider(
-                            uimodelclass[index].imgLink,
-                          ),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      height: 250,
-                      width: 250,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Center(
-                            child: Text(
-                              uimodelclass[index].txt,
-                              style: GoogleFonts.lateef(
-                                textStyle: TextStyle(
-                                  fontSize: 30.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-
-
-
-
-/*********************************************
-   List<Categories> categoryFiltering = songsCategories
-        .where(
-          (e) => e.categoryName == widget.categoryFile,
-        )
-        .toList();
-
-
-          Column(
+              Column(
                 children: [
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -248,10 +184,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               (e) => InkWell(
                                 onTap: () {
                                   print(e.txt);
-                                  Navigator.pushNamed(
-                                    context,
-                                    AudioPlayerScreen.id,
-                                  );
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.only(left: 15, top: 10),
@@ -293,4 +225,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+/*********************************************
+   List<Categories> categoryFiltering = songsCategories
+        .where(
+          (e) => e.categoryName == widget.categoryFile,
+        )
+        .toList();
 **********************************************/
