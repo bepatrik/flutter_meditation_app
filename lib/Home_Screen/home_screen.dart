@@ -58,26 +58,34 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
 
       bottomNavigationBar: Container(
-        child: Container(
-          height: s.height / 15,
-          width: s.width,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.home),
-              ),
-              IconButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return ProfileViewScreen();
-                  }));
-                },
-                icon: Icon(Icons.person),
-              ),
-            ],
-          ),
+        height: 55,
+        width: s.width,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.lock_clock),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.music_note),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.home),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.search),
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, ProfileViewScreen.id);
+              },
+              icon: Icon(Icons.person),
+            ),
+          ],
         ),
       ),
 

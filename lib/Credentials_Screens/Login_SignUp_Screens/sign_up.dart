@@ -18,9 +18,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   ///Controllers
   TextEditingController nameC = TextEditingController();
-
   TextEditingController emailC = TextEditingController();
-
   TextEditingController passC = TextEditingController();
 
   ///global key
@@ -29,6 +27,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   ///auth
   FirebaseAuth auth = FirebaseAuth.instance;
 
+  ///SaveForm
   saveFormUser(BuildContext context) async {
     try {
       if (globalKey.currentState.validate()) {
@@ -41,9 +40,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
         if (user != null) {
           await userRef.child(auth.currentUser.uid).set(
             {
-              "Name": nameC.text.trim(),
-              "Email": emailC.text.trim(),
-              "Password": passC.text.trim(),
+              "name": nameC.text,
+              "email": emailC.text,
+              "password": passC.text,
             },
           ).catchError(
             (onError) {
@@ -53,6 +52,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
             },
           );
           await Navigator.pushNamed(context, LogInScreen.id);
+        } else if (user == null) {
+          return Container(child: CircularProgressIndicator());
+        } else {
+          return Container(child: CircularProgressIndicator());
         }
       }
     } catch (e) {

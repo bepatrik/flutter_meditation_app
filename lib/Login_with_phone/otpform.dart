@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Constants/constants.dart';
-import 'package:flutter_meditation_app/LOGIN_With_PhoneNumber/auth_provider.dart';
+import 'package:flutter_meditation_app/Login_with_phone/auth_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OTPFormScreen extends StatefulWidget {
