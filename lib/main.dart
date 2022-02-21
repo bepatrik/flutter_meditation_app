@@ -5,7 +5,6 @@ import 'package:flutter_meditation_app/Credentials_Screens/User_Login_Logout/use
 import 'package:flutter_meditation_app/Credentials_Screens/Login_SignUp_Screens/log_in.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/Login_SignUp_Screens/sign_up.dart';
 import 'package:flutter_meditation_app/Home_Screen/home_screen.dart';
-import 'package:flutter_meditation_app/Login_with_phone/otpform.dart';
 import 'package:flutter_meditation_app/Music_Player/Songs_Widgets/audio_screen.dart';
 import 'package:flutter_meditation_app/User_Profile_Management/profile_view_screen.dart';
 
@@ -38,7 +37,6 @@ class MyApp extends StatelessWidget {
         ForgetPassWordScreen.id: (context) => ForgetPassWordScreen(),
         UserLogInActivity.id: (context) => UserLogInActivity(),
         ProfileViewScreen.id: (context) => ProfileViewScreen(),
-        OTPFormScreen.id: (context) => OTPFormScreen(),
         // HomePage.id:(context)=> HomePage(),
         // HomePage.id:(context)=> HomePage(),
         // HomePage.id:(context)=> HomePage(),

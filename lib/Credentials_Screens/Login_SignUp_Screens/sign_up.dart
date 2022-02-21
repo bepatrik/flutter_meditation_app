@@ -75,6 +75,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 
+  ///initialing iconButton
+  @override
+  void initState() {
+    icnBtn = Icons.visibility_off;
+    isVisible = false;
+    obsecure = true;
+    super.initState();
+  }
+
+  ///for password eye
+  bool isVisible = false;
+  IconData icnBtn;
+  bool obsecure = false;
+
   @override
   Widget build(BuildContext context) {
     ///size
@@ -193,7 +207,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               ),
                               prefixIcon: Icon(Icons.lock),
                               hintText: 'Enter Password',
-                              suffixIcon: Icon(Icons.visibility),
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  if (!isVisible) {
+                                    setState(() {
+                                      isVisible = true;
+                                      obsecure = true;
+                                      icnBtn = Icons.visibility_off;
+                                    });
+                                  } else {
+                                    setState(() {
+                                      isVisible = false;
+                                      obsecure = false;
+                                      icnBtn = Icons.visibility;
+                                    });
+                                  }
+                                },
+                                icon: Icon(icnBtn),
+                              ),
                             ),
                           ),
                         ),

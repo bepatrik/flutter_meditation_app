@@ -6,7 +6,6 @@ import 'package:flutter_meditation_app/Constants/constants.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/Forget_Password/forget_password.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/Login_SignUp_Screens/sign_up.dart';
 import 'package:flutter_meditation_app/Home_Screen/home_screen.dart';
-import 'package:flutter_meditation_app/Login_with_phone/otpform.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -29,6 +28,7 @@ class _LogInScreenState extends State<LogInScreen> {
   ///auth
   FirebaseAuth auth = FirebaseAuth.instance;
 
+  ///saveform
   saveFormUser(BuildContext context) async {
     try {
       if (globalKey.currentState.validate()) {
@@ -61,6 +61,20 @@ class _LogInScreenState extends State<LogInScreen> {
     passC.dispose();
     super.dispose();
   }
+
+  ///initialing iconButton
+  @override
+  void initState() {
+    icnBtn = Icons.visibility_off;
+    isVisible = false;
+    obsecure = true;
+    super.initState();
+  }
+
+  ///for password eye
+  bool isVisible = false;
+  IconData icnBtn;
+  bool obsecure = false;
 
   @override
   Widget build(BuildContext context) {
@@ -150,14 +164,31 @@ class _LogInScreenState extends State<LogInScreen> {
                                   return toastmsg(e.toString());
                                 }
                               },
-                              obscureText: true,
+                              obscureText: obsecure,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(50),
                                 ),
                                 prefixIcon: Icon(Icons.lock),
                                 hintText: 'Enter Password',
-                                suffixIcon: Icon(Icons.visibility),
+                                suffixIcon: IconButton(
+                                  onPressed: () {
+                                    if (!isVisible) {
+                                      setState(() {
+                                        isVisible = true;
+                                        obsecure = true;
+                                        icnBtn = Icons.visibility_off;
+                                      });
+                                    } else {
+                                      setState(() {
+                                        isVisible = false;
+                                        obsecure = false;
+                                        icnBtn = Icons.visibility;
+                                      });
+                                    }
+                                  },
+                                  icon: Icon(icnBtn),
+                                ),
                               ),
                             ),
                           ),
@@ -181,17 +212,6 @@ class _LogInScreenState extends State<LogInScreen> {
                                   ),
                                 ),
                               ),
-                            ),
-                          ),
-                          Container(
-                            height: 40,
-                            color: Colors.grey.withOpacity(0.3),
-                            child: TextButton.icon(
-                              icon: Icon(Icons.phone),
-                              onPressed: () {
-                                Navigator.pushNamed(context, OTPFormScreen.id);
-                              },
-                              label: Text('Login with phone'),
                             ),
                           ),
                           TextButton(

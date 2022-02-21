@@ -101,9 +101,9 @@ class ProfileViewScreen extends StatelessWidget {
                             ListTile(
                               title: Text('Phone Number'),
                               trailing: Text(
-                                  auth.currentUser.phoneNumber == null
-                                      ? "No number added"
-                                      : "${auth.currentUser.phoneNumber}"),
+                                  auth.currentUser.phoneNumber != null
+                                      ? "${auth.currentUser.phoneNumber}"
+                                      : "No number added"),
                             ),
                             Divider(),
                             ListTile(
