@@ -84,7 +84,9 @@ class _SongWidgetState extends State<SongWidget> {
           child: Row(
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
                 icon: Icon(Icons.arrow_back),
               ),
             ],
@@ -108,7 +110,6 @@ class _SongWidgetState extends State<SongWidget> {
             children: [
               Text(
                 "${widget.songList[songIndex].category}",
-                // "${txt}",
                 style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,
@@ -251,19 +252,6 @@ class _SongWidgetState extends State<SongWidget> {
                 ? _duration.inMilliseconds.toDouble()
                 : 0.0
             : 0.0);
-/*********************************************
- * CODE SLIDER
- * UN-USED
-**********************************************/
-    // value: _position.inSeconds.toDouble(),
-    // min: 0.0,
-    // max: _duration.inSeconds.toDouble(),
-    // onChanged: (double val) {
-    //   setState(() {
-    //     seekToSecond(val.toInt());
-    //     val = val;
-    //   });
-    // });
   }
 
 /*********************************************
