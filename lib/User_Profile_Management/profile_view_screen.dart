@@ -72,7 +72,8 @@ class ProfileViewScreen extends StatelessWidget {
                 children: [
                   FutureBuilder<User>(
                     initialData: auth.currentUser,
-                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    builder:
+                        (BuildContext context, AsyncSnapshot<User> snapshot) {
                       if (snapshot.hasData) {
                         return Column(
                           children: [
@@ -81,38 +82,40 @@ class ProfileViewScreen extends StatelessWidget {
                             anonymously or via password authentication.*/
                             Divider(),
                             ListTile(
+                              onTap: () {},
                               title: Text('Name'),
                               trailing: Text(
                                 auth.currentUser != null
                                     ? "${auth.currentUser.displayName}"
-                                    : Container(
-                                        height: 2.0,
-                                        width: 40.0,
-                                        child: Text('Progress Indicator'),
-                                      ),
+                                    : Center(
+                                        child: CircularProgressIndicator()),
                               ),
                             ),
                             Divider(),
                             ListTile(
+                              onTap: () {},
                               title: Text('E-mail'),
                               trailing: Text("${auth.currentUser.email}"),
                             ),
                             Divider(),
                             ListTile(
+                              onTap: () {},
                               title: Text('Phone Number'),
                               trailing: Text(
                                   auth.currentUser.phoneNumber != null
                                       ? "${auth.currentUser.phoneNumber}"
-                                      : "No number added"),
+                                      : "No Number Added"),
                             ),
                             Divider(),
                             ListTile(
+                              onTap: () {},
                               title: Text('Created on'),
                               trailing: Text(
                                   "${auth.currentUser.metadata.creationTime}"),
                             ),
                             Divider(),
                             ListTile(
+                              onTap: () {},
                               title: Text('Email verified'),
                               trailing: Text(
                                 "${auth.currentUser.emailVerified}" == true
@@ -122,6 +125,7 @@ class ProfileViewScreen extends StatelessWidget {
                             ),
                             Divider(),
                             ListTile(
+                              onTap: () {},
                               title: Text('User Type'),
                               trailing: Text(
                                 auth.currentUser.isAnonymous == true
