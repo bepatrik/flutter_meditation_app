@@ -6,7 +6,6 @@ import 'package:flutter_meditation_app/Credentials_Screens/Login_SignUp_Screens/
 import 'package:flutter_meditation_app/Credentials_Screens/Login_SignUp_Screens/sign_up.dart';
 import 'package:flutter_meditation_app/Home_Screen/home_screen.dart';
 import 'package:flutter_meditation_app/Music_Player/Songs_Widgets/audio_screen.dart';
-import 'package:flutter_meditation_app/User_Profile_Management/profile_view_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +35,6 @@ class MyApp extends StatelessWidget {
         SignUpScreen.id: (context) => SignUpScreen(),
         ForgetPassWordScreen.id: (context) => ForgetPassWordScreen(),
         UserLogInActivity.id: (context) => UserLogInActivity(),
-        ProfileViewScreen.id: (context) => ProfileViewScreen(),
         // HomePage.id:(context)=> HomePage(),
         // HomePage.id:(context)=> HomePage(),
         // HomePage.id:(context)=> HomePage(),

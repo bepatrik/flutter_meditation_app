@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meditation_app/Constants/constants.dart';
 import 'package:flutter_meditation_app/Credentials_Screens/Login_SignUp_Screens/log_in.dart';
 import 'package:flutter_meditation_app/Music_Player/UI_Model/ui_model.dart';
-import 'package:flutter_meditation_app/User_Profile_Management/profile_view_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -55,38 +54,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ];
           }),
         ],
-      ),
-
-      bottomNavigationBar: Container(
-        height: 55,
-        width: s.width,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.lock_clock),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.music_note),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.home),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.search),
-            ),
-            IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, ProfileViewScreen.id);
-              },
-              icon: Icon(Icons.person),
-            ),
-          ],
-        ),
       ),
 
       ///Body
