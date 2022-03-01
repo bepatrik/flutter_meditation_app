@@ -146,49 +146,49 @@ class _HomeScreenState extends State<HomeScreen> {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                        children: uimodelclass
-                            .map(
-                              (e) => InkWell(
-                                onTap: () {
-                                  print(e.txt);
-                                },
-                                child: Padding(
-                                  padding: EdgeInsets.only(left: 15, top: 10),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(25),
-                                      image: DecorationImage(
-                                        image: CachedNetworkImageProvider(
-                                          e.imgLink,
-                                        ),
-                                        fit: BoxFit.cover,
+                      children: uimodelclass
+                          .map(
+                            (e) => InkWell(
+                              onTap: () {
+                                print(e.txt);
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 15, top: 10),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(25),
+                                    image: DecorationImage(
+                                      image: CachedNetworkImageProvider(
+                                        e.imgLink,
                                       ),
+                                      fit: BoxFit.cover,
                                     ),
-                                    height: 250,
-                                    width: 250,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Center(
-                                          child: Text(
-                                            e.txt,
-                                            style: GoogleFonts.lateef(
-                                              textStyle: TextStyle(
-                                                fontSize: 35.0,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                  ),
+                                  height: 250,
+                                  width: 250,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Center(
+                                        child: Text(
+                                          e.txt,
+                                          style: GoogleFonts.lateef(
+                                            textStyle: TextStyle(
+                                              fontSize: 35.0,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
                                             ),
                                           ),
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
-                            )
-                            .toList()),
+                            ),
+                          )
+                          .toList(),
+                    ),
                   ),
                 ],
               )
